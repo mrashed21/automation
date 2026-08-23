@@ -1,0 +1,66 @@
+{
+  "name": "web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "type-check": "tsc --noEmit",
+    "test": "jest",
+    "test:ci": "jest --ci --coverage",
+    "clean": "rimraf .next"
+  },
+  "dependencies": {
+    "next": "16.3.2",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "@reduxjs/toolkit": "^2.3.0",
+    "react-redux": "^9.1.2",
+    "react-hook-form": "^7.53.0",
+    "zod": "^3.23.8",
+    "@hookform/resolvers": "^3.9.0",
+    "lucide-react": "^0.441.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.5.2",
+    "date-fns": "^4.1.0",
+    "recharts": "^2.12.7",
+    "sonner": "^1.5.0",
+    "@repo/types": "workspace:*",
+    "@repo/config": "workspace:*",
+    "@repo/validation": "workspace:*"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "babel-plugin-react-compiler": "1.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.2",
+    "jest": "^29.7.0",
+    "rimraf": "^6.0.1",
+    "tailwindcss": "^4",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.(t|j)sx?$": [
+        "ts-jest",
+        {
+          "tsconfig": {
+            "jsx": "react-jsx"
+          }
+        }
+      ]
+    },
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/$1"
+    }
+  }
+}

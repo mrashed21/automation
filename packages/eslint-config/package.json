@@ -1,0 +1,21 @@
+{
+  "name": "@repo/eslint-config",
+  "version": "0.0.1",
+  "private": true,
+  "license": "UNLICENSED",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./nest": "./nest.js",
+    "./next": "./next.js"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "typescript-eslint": "^8.0.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.0.0"
+  }
+}

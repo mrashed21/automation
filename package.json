@@ -1,0 +1,29 @@
+{
+  "name": "ai-content-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Autonomous AI Content Operations Platform for YouTube and Facebook",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "type-check": "turbo run type-check",
+    "test": "turbo run test",
+    "test:ci": "turbo run test:ci",
+    "clean": "turbo run clean && rimraf node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md}\" --ignore-path .gitignore",
+    "format:check": "prettier --check \"**/*.{ts,tsx,json,md}\" --ignore-path .gitignore"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.0",
+    "prettier": "^3.3.3",
+    "rimraf": "^6.0.1",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.5.4"
+  },
+  "packageManager": "pnpm@9.7.1",
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}

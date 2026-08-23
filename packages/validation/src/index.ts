@@ -1,0 +1,8 @@
+// Shared Zod validation schemas for the AI Content Automation Platform.
+// These schemas can be used in both frontend (form validation) and backend (DTO validation).
+
+export * from "./auth.schema";
+export * from "./workspace.schema";
+export * from "./content.schema";
+export * from "./schedule.schema";
+export * from "./platform.schema";
