@@ -12,6 +12,10 @@ import {
   AnalyticsSnapshot,
   AnalyticsSnapshotSchema,
 } from "../../database/schemas/analytics-snapshot.schema";
+import {
+  WorkspaceMember,
+  WorkspaceMemberSchema,
+} from "../../database/schemas/workspace-member.schema";
 import { AiModule } from "../ai/ai.module";
 import { StrategyService } from "./strategy.service";
 import { StrategyController } from "./strategy.controller";
@@ -22,6 +26,7 @@ import { StrategyController } from "./strategy.controller";
       { name: StrategyRecommendation.name, schema: StrategyRecommendationSchema },
       { name: Content.name, schema: ContentSchema },
       { name: AnalyticsSnapshot.name, schema: AnalyticsSnapshotSchema },
+      { name: WorkspaceMember.name, schema: WorkspaceMemberSchema },
     ]),
     AiModule,
   ],

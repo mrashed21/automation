@@ -8,6 +8,10 @@ import {
   AutomationRun,
   AutomationRunSchema,
 } from "../../database/schemas/automation-run.schema";
+import {
+  WorkspaceMember,
+  WorkspaceMemberSchema,
+} from "../../database/schemas/workspace-member.schema";
 import { AutomationService } from "./automation.service";
 import { AutomationController } from "./automation.controller";
 
@@ -16,6 +20,7 @@ import { AutomationController } from "./automation.controller";
     MongooseModule.forFeature([
       { name: AutomationRule.name, schema: AutomationRuleSchema },
       { name: AutomationRun.name, schema: AutomationRunSchema },
+      { name: WorkspaceMember.name, schema: WorkspaceMemberSchema },
     ]),
   ],
   controllers: [AutomationController],
