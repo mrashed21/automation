@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-Phase 02 — Dashboard Layout & Workspace Shell (Phase 01 Authentication & Workspaces Completed)
+Phase 03 — Content Core & Library (Phase 02 Dashboard & Workspace Shell Completed)
 
 ## Completed
 
@@ -26,25 +26,46 @@ Phase 02 — Dashboard Layout & Workspace Shell (Phase 01 Authentication & Works
   - [x] Frontend RTK Query API slices (`authApi`, `workspaceApi`) synchronized with Redux store
   - [x] Automated unit test suites for auth service and workspace guard
   - [x] Zero-error verification for type-check, lint, test, and production build
+- [x] Phase 02: Dashboard Layout & Workspace Shell
+  - [x] Expanded CSS design token system (full light/dark palette, sidebar tokens, header tokens, transition vars)
+  - [x] Radix UI primitives (`DropdownMenu`, `Avatar`, `Badge`, `Select`, `Separator`, `Skeleton`, `Tooltip`)
+  - [x] `app/(dashboard)/layout.tsx` — server layout with `AuthGuard` wrap
+  - [x] `DashboardContentWrapper` — client component bridging Redux collapsed state to CSS class
+  - [x] `DashboardSidebar` — collapsible sidebar with workspace switcher, grouped nav, tooltips in collapsed mode
+  - [x] `DashboardHeader` — sticky header with sidebar toggle, theme picker, and user menu
+  - [x] `WorkspaceSwitcher` — dropdown reading from Redux, dispatches `selectWorkspace` on selection
+  - [x] `UserMenu` — avatar dropdown with name/email, settings nav, and logout action
+  - [x] `MetricCard` — reusable dashboard metric card with icon, value, trend badge
+  - [x] `StatsRow` — three-card dashboard overview (pipeline, scheduled, published)
+  - [x] `WorkspaceSettingsForm` — React Hook Form + Zod bound to `updateWorkspace` RTK mutation
+  - [x] `InviteMemberForm` — invite by email + role using `inviteMember` RTK mutation
+  - [x] `TeamMembersTable` — member list with skeleton loading, role select per member, remove action
+  - [x] `/dashboard` — home page with metric cards and activity placeholder
+  - [x] `/dashboard/settings/workspace` — workspace settings page
+  - [x] `/dashboard/settings/team` — team members management page
+  - [x] Zero-error verification for type-check and lint (2 RHF `watch()` compiler info warnings only)
 
 ## In Progress
 
-- [ ] Phase 02: Dashboard Layout & Workspace Shell (Collapsible sidebar, workspace switcher, header, theme toggle)
+- [ ] Phase 03: Content Core & Library
 
 ## Recently Completed
 
-### 2026-08-23
+### 2026-08-29
 
-- Implemented full Phase 01 Authentication & Multi-Tenant Workspaces architecture.
-- Added cookie-based refresh token rotation with token reuse invalidation.
-- Created hierarchical RBAC guards (`owner`, `admin`, `editor`, `viewer`).
-- Built responsive login and registration pages using React Hook Form and Tailwind CSS.
-- Verified all quality gates (`pnpm type-check`, `pnpm lint`, `pnpm test`, `pnpm build`).
+- Implemented full Phase 02 Dashboard & Workspace Shell.
+- Built collapsible sidebar with workspace switcher, themed navigation, and tooltip support in collapsed mode.
+- Wired sidebar collapse, theme toggle, and workspace selection to existing Redux slices (no new slices needed).
+- Built workspace settings form and team members management UI backed by existing RTK Query mutations.
+- Installed Radix UI primitives (DropdownMenu, Avatar, Select, Separator, Tooltip) and wrote shadcn-compatible wrappers.
+- Verified zero type errors (`pnpm type-check`) and zero lint errors (`pnpm lint`).
 
 ## Current System Status
 
 Frontend (`apps/web`):
-Auth & Workspace UI ready (`/login`, `/register`, landing page, Redux auth slice, RTK Query client)
+Auth & Workspace UI ready (`/login`, `/register`, landing page)
+Dashboard shell ready (`/dashboard`, `/dashboard/settings/workspace`, `/dashboard/settings/team`)
+Sidebar, header, workspace switcher, user menu, theme toggle all functional
 
 Backend API (`apps/api`):
 Auth & Multi-Tenant Workspaces ready (`/auth/*`, `/workspaces/*`, `/users/*`, `/health`)
@@ -64,6 +85,9 @@ MinIO S3 configuration defined
 Authentication:
 Completed (JWT + HttpOnly cookie refresh token rotation + RBAC)
 
+Content Pipeline:
+Not implemented (Phase 03+)
+
 AI Agents & Pipelines:
 Not implemented (Phase 04+)
 
@@ -75,4 +99,4 @@ Not implemented (Phase 11)
 
 ## Last Updated
 
-2026-08-23
+2026-08-29

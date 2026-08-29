@@ -1,15 +1,5 @@
 # Pending Work
 
-## Critical (Phase 02 — Dashboard & Workspace Shell)
-
-- [ ] Dashboard shell layout (`/dashboard/layout.tsx`)
-- [ ] Responsive, collapsible sidebar navigation
-- [ ] Workspace switcher dropdown component in header
-- [ ] User profile / account menu & logout button
-- [ ] Metrics summary cards (pipeline status overview, scheduled count, published count)
-- [ ] Workspace settings modal / page (`/dashboard/settings/workspace`)
-- [ ] Team members management UI (`/dashboard/settings/team`)
-
 ## High Priority (Phase 03 — Content Core & Library)
 
 - [ ] Content schema & models (`content`, `content-versions`)
@@ -43,3 +33,4 @@ None.
 
 - [x] Phase 00: Foundation (Monorepo, shared packages, Next.js web, NestJS API, workers, Docker, CI, tests)
 - [x] Phase 01: Authentication & Workspaces (JWT, refresh token cookies, RBAC, Mongoose schemas, auth pages, RTK Query)
+- [x] Phase 02: Dashboard & Workspace Shell (collapsible sidebar, workspace switcher, user menu, theme toggle, metric cards, workspace settings form, team members management UI)
