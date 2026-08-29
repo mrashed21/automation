@@ -21,6 +21,14 @@ async function bootstrap(): Promise<void> {
   const port = configService.get<number>("API_PORT", 3001);
   const corsOrigins = configService.get<string>("API_CORS_ORIGINS", "http://localhost:3000");
 
+  // Normalize duplicate slashes in URLs (e.g., //api/v1 -> /api/v1)
+  app.use((req: { url: string }, _res: unknown, next: () => void) => {
+    if (req.url && req.url.includes("//")) {
+      req.url = req.url.replace(/\/+/g, "/");
+    }
+    next();
+  });
+
   // Cookie parser for secure HttpOnly refresh token cookies
   app.use(cookieParser());
 

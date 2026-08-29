@@ -9,10 +9,14 @@ import { API_BASE_PATH } from "@repo/config";
  * Per plan.md section 14: centralizes base URL, authentication, refresh handling,
  * error normalization, and request headers.
  */
+const rawApiUrl = process.env["NEXT_PUBLIC_API_URL"] ?? "http://localhost:3010";
+const apiUrl = rawApiUrl.replace(/\/+$/, "");
+const basePath = API_BASE_PATH.replace(/^\/+/, "");
+
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `${process.env["NEXT_PUBLIC_API_URL"] ?? "http://localhost:3001"}/${API_BASE_PATH}`,
+    baseUrl: `${apiUrl}/${basePath}`,
     credentials: "include", // Send cookies for session-based auth
     prepareHeaders: (headers) => {
       // Auth token injection happens here in Phase 1 after JWT is implemented

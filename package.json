@@ -4,7 +4,10 @@
   "private": true,
   "description": "Autonomous AI Content Operations Platform for YouTube and Facebook",
   "scripts": {
-    "dev": "turbo run dev",
+    "dev": "turbo run dev --filter web --filter api",
+    "dev:web": "pnpm --filter web dev",
+    "dev:api": "pnpm --filter api dev",
+    "dev:all": "turbo run dev",
     "build": "turbo run build",
     "lint": "turbo run lint",
     "type-check": "turbo run type-check",
