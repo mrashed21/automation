@@ -12,19 +12,15 @@ import {
   Trash2,
   RefreshCw,
   Edit3,
-  Check,
-  ChevronDown,
-  ChevronUp,
   FileText,
   Loader2,
 } from "lucide-react";
 import { toast } from "sonner";
-import { formatDistanceToNow, format } from "date-fns";
+import { format } from "date-fns";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
 import {
   useGetScriptByContentIdQuery,
   useGetScriptVersionsQuery,
@@ -34,7 +30,6 @@ import {
 import type {
   ContentDto,
   ScriptSectionDto,
-  ScriptSectionType,
 } from "@repo/types";
 
 interface ScriptTabViewProps {
@@ -62,15 +57,23 @@ export function ScriptTabView({ content }: ScriptTabViewProps) {
   const [changeReason, setChangeReason] = React.useState("");
   const [showHistory, setShowHistory] = React.useState(false);
 
-  // Sync script state when fetched
-  React.useEffect(() => {
+  function handleStartEdit() {
     if (script) {
       setEditableSections(script.sections);
       setEditableHook(script.hook);
       setEditableTitle(script.title);
-      setTone(script.tone);
     }
-  }, [script]);
+    setIsEditing(true);
+  }
+
+  function handleCancelEdit() {
+    if (script) {
+      setEditableSections(script.sections);
+      setEditableHook(script.hook);
+      setEditableTitle(script.title);
+    }
+    setIsEditing(false);
+  }
 
   async function onTriggerGenerate() {
     try {
@@ -82,7 +85,7 @@ export function ScriptTabView({ content }: ScriptTabViewProps) {
           customInstructions: customInstructions || undefined,
         },
       }).unwrap();
-      toast.success("AI Video Script generated and revision v1 saved!");
+      toast.success("AI Video Script generated and revision saved!");
       setIsEditing(false);
     } catch {
       toast.error("Failed to generate script.");
@@ -122,11 +125,15 @@ export function ScriptTabView({ content }: ScriptTabViewProps) {
     }
   }
 
-  function handleSectionChange(index: number, field: keyof ScriptSectionDto, value: any) {
+  function handleSectionChange<K extends keyof ScriptSectionDto>(
+    index: number,
+    field: K,
+    value: ScriptSectionDto[K],
+  ) {
     const updated = [...editableSections];
     const target = { ...updated[index]!, [field]: value };
-    if (field === "narration") {
-      const words = (value as string).trim().split(/\s+/).filter(Boolean).length;
+    if (field === "narration" && typeof value === "string") {
+      const words = value.trim().split(/\s+/).filter(Boolean).length;
       target.wordCount = words;
       target.estimatedDurationSeconds = Math.max(2, Math.round(words / 2.4));
     }
@@ -253,8 +260,12 @@ export function ScriptTabView({ content }: ScriptTabViewProps) {
     );
   }
 
-  const totalWords = editableSections.reduce((acc, s) => acc + (s.wordCount || 0), 0);
-  const totalSeconds = editableSections.reduce((acc, s) => acc + (s.estimatedDurationSeconds || 0), 0);
+  const displaySections = isEditing ? editableSections : script.sections;
+  const displayTitle = isEditing ? editableTitle : script.title;
+  const displayHook = isEditing ? editableHook : script.hook;
+
+  const totalWords = displaySections.reduce((acc, s) => acc + (s.wordCount || 0), 0);
+  const totalSeconds = displaySections.reduce((acc, s) => acc + (s.estimatedDurationSeconds || 0), 0);
 
   return (
     <div className="space-y-6">
@@ -269,7 +280,7 @@ export function ScriptTabView({ content }: ScriptTabViewProps) {
                 className="text-base font-bold h-8 max-w-md"
               />
             ) : (
-              <h3 className="text-base font-bold text-[var(--foreground)]">{script.title}</h3>
+              <h3 className="text-base font-bold text-[var(--foreground)]">{displayTitle}</h3>
             )}
             <Badge variant="outline" className="font-semibold text-xs shrink-0">
               v{script.currentVersion}
@@ -289,7 +300,7 @@ export function ScriptTabView({ content }: ScriptTabViewProps) {
             <span>•</span>
             <span className="capitalize font-medium text-[var(--foreground)]">{script.tone} tone</span>
             <span>•</span>
-            <span>{editableSections.length} sections</span>
+            <span>{displaySections.length} sections</span>
           </div>
         </div>
 
@@ -309,12 +320,7 @@ export function ScriptTabView({ content }: ScriptTabViewProps) {
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => {
-                  setEditableSections(script.sections);
-                  setEditableHook(script.hook);
-                  setEditableTitle(script.title);
-                  setIsEditing(false);
-                }}
+                onClick={handleCancelEdit}
                 className="text-xs"
               >
                 Cancel
@@ -334,7 +340,7 @@ export function ScriptTabView({ content }: ScriptTabViewProps) {
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => setIsEditing(true)}
+                onClick={handleStartEdit}
                 className="gap-1.5 text-xs"
               >
                 <Edit3 className="h-3.5 w-3.5" />
@@ -410,7 +416,7 @@ export function ScriptTabView({ content }: ScriptTabViewProps) {
           />
         ) : (
           <p className="text-sm font-semibold text-[var(--foreground)] leading-relaxed italic">
-            "{editableHook}"
+            &ldquo;{displayHook}&rdquo;
           </p>
         )}
       </div>
@@ -430,7 +436,7 @@ export function ScriptTabView({ content }: ScriptTabViewProps) {
         </div>
 
         <div className="space-y-4">
-          {editableSections.map((section, idx) => (
+          {displaySections.map((section, idx) => (
             <div
               key={section.id || idx}
               className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 space-y-4 shadow-2xs"

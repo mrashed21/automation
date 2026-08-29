@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-Phase 04 — AI Providers & Autonomous Research Agent (Phase 03 Content Core & Library Completed)
+Phase 06 — Media Assets Management & Object Storage (Phases 00–05 Completed)
 
 ## Completed
 
@@ -59,10 +59,27 @@ Phase 04 — AI Providers & Autonomous Research Agent (Phase 03 Content Core & L
   - [x] `/dashboard/content` — Content Library page with live RTK Query synchronization
   - [x] `/dashboard/content/[id]` — Content Details page with breadcrumb navigation
   - [x] Zero-error verification for type-check and lint
+- [x] Phase 04: AI Provider Abstraction & Autonomous Research Agent
+  - [x] Multi-modal provider contracts (`IAiTextProvider`, `IAiImageProvider`, `IAiVoiceProvider`)
+  - [x] NestJS `AiService` orchestrator with retry policy and strict Zod output validation pipeline
+  - [x] `GeminiTextProvider` utilizing Google Gemini models with fallback handling
+  - [x] Mongoose schemas: `Research`, `ResearchSource`, `ResearchFact` with workspace compound indexes
+  - [x] NestJS `ResearchService` synthesizing executive summaries, authoritative sources, reliability scoring, and verifiable claims
+  - [x] NestJS `ResearchController` (`POST /api/v1/content/:id/research`, `GET /api/v1/content/:id/research`, `PATCH /api/v1/content/:id/research/facts/:factId`, `POST /api/v1/content/:id/research/verify`)
+  - [x] Frontend `researchApi` RTK Query slice with automatic cache invalidation
+  - [x] `ResearchTabView` interactive UI: research depth selection, topic synthesis, verified fact cards, reliability badges, and fact dispute/verification controls
+  - [x] Comprehensive unit tests for `AiService` and `ResearchService`
+- [x] Phase 05: Script Generator & Versioning Engine
+  - [x] Mongoose schemas: `Script` (sections with durations, words, visual cues) & `ScriptVersion` (immutable snapshots)
+  - [x] NestJS `ScriptService` generating high-retention structured scripts tailored to content type and verified research claims
+  - [x] NestJS `ScriptController` (`POST /api/v1/content/:id/script`, `GET /api/v1/content/:id/script`, `PATCH /api/v1/content/:id/script`, `GET /api/v1/content/:id/script/versions`)
+  - [x] Frontend `scriptApi` RTK Query slice with automatic cache invalidation
+  - [x] `ScriptTabView` studio workspace: tone selection, duration slider, section adder/reorderer/editor, spoken duration calculation, visual cue editor, and immutable revision diff timeline
+  - [x] Comprehensive unit tests for `ScriptService`
 
 ## In Progress
 
-- [ ] Phase 04: AI Providers & Autonomous Research Agent
+- [ ] Phase 06: Media Assets Management & Object Storage
 
 ## Current System Status
 
@@ -70,13 +87,17 @@ Frontend (`apps/web`):
 - Auth & Workspace UI ready (`/login`, `/register`, landing page)
 - Dashboard shell ready (`/dashboard`, `/dashboard/settings/workspace`, `/dashboard/settings/team`)
 - Content Library ready (`/dashboard/content`, `/dashboard/content/[id]`)
+- Research & Facts Studio ready (`ResearchTabView` with depth picker and live verification)
+- Script Studio ready (`ScriptTabView` with section editor and immutable version history)
 
 Backend API (`apps/api`):
 - Auth & Multi-Tenant Workspaces ready (`/auth/*`, `/workspaces/*`, `/users/*`, `/health`)
 - Content Core ready (`/content`, `/content/:id`, `/content/:id/versions`)
+- AI Provider & Research ready (`/content/:id/research`, `/content/:id/research/facts/:factId`, `/content/:id/research/verify`)
+- Script Engine ready (`/content/:id/script`, `/content/:id/script/versions`)
 
 Database:
-- Mongoose schemas registered (`users`, `refresh-tokens`, `workspaces`, `workspace-members`, `content`, `content-versions`)
+- Mongoose schemas registered (`users`, `refresh-tokens`, `workspaces`, `workspace-members`, `content`, `content-versions`, `researches`, `research-sources`, `research-facts`, `scripts`, `script-versions`)
 - Connected to live MongoDB Atlas database
 
 ## Last Updated

@@ -1,5 +1,12 @@
 {
   "extends": "@repo/tsconfig/base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "target": "ES2021",
+    "module": "CommonJS",
+    "moduleResolution": "node"
+  },
   "include": ["src"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }

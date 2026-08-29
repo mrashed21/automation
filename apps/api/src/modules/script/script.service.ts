@@ -1,7 +1,6 @@
 import {
   Injectable,
   NotFoundException,
-  BadRequestException,
   Logger,
 } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
@@ -20,7 +19,6 @@ import {
 } from "@repo/validation";
 import type {
   ScriptDto,
-  ScriptSectionDto,
   ScriptVersionDto,
 } from "@repo/types";
 
@@ -158,7 +156,7 @@ Requirements:
       script.hook = generated.hook;
       script.tone = tone;
       script.targetDurationSeconds = targetDuration;
-      script.sections = processedSections as any;
+      script.sections = processedSections;
       script.wordCount = totalWords;
       script.estimatedDurationSeconds = totalDuration;
       script.fullText = fullText;
@@ -266,7 +264,7 @@ Requirements:
     if (input.title) script.title = input.title;
     if (input.hook) script.hook = input.hook;
     if (input.tone) script.tone = input.tone;
-    script.sections = processedSections as any;
+    script.sections = processedSections;
     script.wordCount = totalWords;
     script.estimatedDurationSeconds = totalDuration;
     script.fullText = fullText;

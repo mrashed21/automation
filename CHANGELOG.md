@@ -1,5 +1,44 @@
 # Changelog
 
+## [0.4.0] - 2026-08-29
+
+### Added - Phase 04 & 05: AI Providers, Autonomous Research & Script Studio
+
+- **AI Provider Abstraction Layer**:
+  - `IAiTextProvider`, `IAiImageProvider`, and `IAiVoiceProvider` multi-modal contracts.
+  - `AiService` orchestrator with retry policies and strict Zod validation pipeline.
+  - `GeminiTextProvider` for Google Gemini models with structured JSON extraction.
+- **Autonomous Research & Fact-Checking Engine**:
+  - Mongoose schemas: `Research`, `ResearchSource`, `ResearchFact` with workspace compound indexing.
+  - `ResearchService` synthesizing executive summaries, web citations, reliability scores, and verifiable claims.
+  - `ResearchController` (`/api/v1/content/:id/research`, `/api/v1/content/:id/research/facts/:factId`, `/api/v1/content/:id/research/verify`).
+  - `ResearchTabView` with depth controls (fast/standard/deep), confidence badges, citation links, and claim status toggles.
+- **Script Generator & Versioning Studio**:
+  - Mongoose schemas: `Script` (sections with durations, word counts, visual cues) and `ScriptVersion` (immutable snapshots).
+  - `ScriptService` generating high-retention structured video scripts.
+  - `ScriptController` (`/api/v1/content/:id/script`, `/api/v1/content/:id/script/versions`).
+  - `ScriptTabView` studio editor with live pacing/duration calculations, visual cue editors, and revision timeline diffs.
+- **Testing & Verification**:
+  - Comprehensive unit test suites for `AiService`, `ResearchService`, and `ScriptService`.
+  - Zero-error validation across type-check, lint, and unit test suites.
+
+---
+
+## [0.3.0] - 2026-08-26
+
+### Added - Phase 03: Content Core & Library
+
+- **Mongoose Schemas & Backend Content Engine**:
+  - `Content` and `ContentVersion` schemas with full workspace isolation.
+  - `ContentService` with pagination, lifecycle status transitions, filters, and immutable history tracking.
+  - `ContentController` (`/api/v1/content`, `/api/v1/content/:id`, `/api/v1/content/:id/versions`).
+- **Frontend Content Library**:
+  - `ContentTable` and `ContentGrid` views with live search and status filters.
+  - `CreateContentDialog` with form validation.
+  - `ContentDetailsTabs` 8-tab studio inspector.
+
+---
+
 ## [0.2.0] - 2026-08-23
 
 ### Added - Phase 01: Authentication & Workspaces

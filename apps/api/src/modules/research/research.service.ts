@@ -1,27 +1,26 @@
 import {
   Injectable,
-  NotFoundException,
-  BadRequestException,
   Logger,
+  NotFoundException,
 } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
-import { Model, Types } from "mongoose";
-import { Research, ResearchDocument } from "../../database/schemas/research.schema";
-import { ResearchSource, ResearchSourceDocument } from "../../database/schemas/research-source.schema";
-import { ResearchFact, ResearchFactDocument } from "../../database/schemas/research-fact.schema";
-import { Content, ContentDocument } from "../../database/schemas/content.schema";
-import { AiService } from "../ai/ai.service";
+import type {
+  ResearchDto,
+  ResearchFactDto,
+  ResearchSourceDto,
+} from "@repo/types";
 import {
   researchOutputValidationSchema,
   type GenerateResearchInput,
-  type VerifyFactInput,
   type ResearchOutputValidation,
+  type VerifyFactInput,
 } from "@repo/validation";
-import type {
-  ResearchDto,
-  ResearchSourceDto,
-  ResearchFactDto,
-} from "@repo/types";
+import { Model, Types } from "mongoose";
+import { Content, ContentDocument } from "../../database/schemas/content.schema";
+import { ResearchFact, ResearchFactDocument } from "../../database/schemas/research-fact.schema";
+import { ResearchSource, ResearchSourceDocument } from "../../database/schemas/research-source.schema";
+import { Research, ResearchDocument } from "../../database/schemas/research.schema";
+import { AiService } from "../ai/ai.service";
 
 @Injectable()
 export class ResearchService {
