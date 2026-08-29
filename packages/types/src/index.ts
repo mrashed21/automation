@@ -9,6 +9,7 @@ export * from "./research.types";
 export * from "./script.types";
 export * from "./media.types";
 export * from "./analytics.types";
+export * from "./automation.types";
 export * from "./workspace.types";
 export * from "./auth.types";
 export * from "./common.types";

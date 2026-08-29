@@ -98,9 +98,20 @@ Phase 06 — Media Assets Management & Object Storage (Phases 00–05 Completed)
   - [x] `PublishingTabView` Studio UI: connected channel cards, quick connect modal, platform switcher (YouTube vs Facebook), SEO metadata inputs, privacy & category selectors, instant & scheduled publishing actions, and live external video links
   - [x] Comprehensive unit test suites for `PublishingService` (41 passing unit tests repo-wide)
 
+- [x] Phase 10: Automation Engine, n8n Webhook Triggers & Analytics Sync Engine
+  - [x] Shared `@repo/types` and `@repo/validation` automation & analytics contracts (`AutomationRuleDto`, `AutomationRunDto`, `AnalyticsSnapshotDto`, Zod schemas)
+  - [x] Mongoose schemas: `AutomationRule` (cron, webhook, manual triggers; target platforms; daily quota; approval modes), `AutomationRun` (embedded `PipelineStage` execution history), `AnalyticsSnapshot` (views, likes, comments, watch time, CTR, retention percent, subscribers gained)
+  - [x] NestJS `AutomationModule`: `AutomationService` & `AutomationController` (`GET /api/v1/automation/rules`, `POST /api/v1/automation/rules`, `PATCH /api/v1/automation/rules/:id`, `POST /api/v1/automation/rules/:id/toggle`, `DELETE /api/v1/automation/rules/:id`, `POST /api/v1/automation/rules/:id/trigger`, `GET /api/v1/automation/runs`, `GET /api/v1/automation/status`, HMAC-verified `POST /api/v1/automation/webhook/:ruleId`)
+  - [x] NestJS `AnalyticsModule`: `AnalyticsService` & `AnalyticsController` (`GET /api/v1/content/:id/analytics/snapshots`, `GET /api/v1/content/:id/analytics/latest`, `POST /api/v1/content/:id/analytics/sync`, `GET /api/v1/analytics/summary`)
+  - [x] Frontend `automationApi` & `analyticsApi` RTK Query slices
+  - [x] `AnalyticsTabView` with real-time performance cards, per-platform metrics, interactive multi-metric Recharts growth charts, and manual sync action
+  - [x] `/dashboard/automation` Automation Dashboard page with system health indicators, live counters, rule builder dialog, toggle switches, manual run triggers, and run timeline visualizer
+  - [x] Comprehensive unit test suites for `AutomationService` and `AnalyticsService` (53 total passing unit tests across monorepo)
+  - [x] Monorepo verification: `pnpm type-check` (10/10 packages), `pnpm lint` (0 errors), `pnpm test` (53/53 passing), `pnpm build` (7/7 packages clean)
+
 ## In Progress
 
-- [ ] Phase 10: Automation Engine & n8n Webhook Triggers (Automated Pipeline Execution & Scheduled Content Runs)
+- [ ] Phase 12: Autonomous Strategist Agent & Continuous Improvement Feedback Loop
 
 ## Current System Status
 
@@ -113,6 +124,8 @@ Frontend (`apps/web`):
 - Media & Video Studio ready (`MediaTabView` with voice generator, audio player, video render studio, and asset pool)
 - Thumbnail Studio ready (`ThumbnailTabView` with A/B variant generator and primary selection)
 - Publishing & Social Studio ready (`PublishingTabView` with YouTube & Facebook adapters and live post links)
+- Analytics Studio ready (`AnalyticsTabView` with multi-platform cards, sync trigger, and Recharts growth curves)
+- Automation Dashboard ready (`/dashboard/automation` with health strip, rule modal, trigger action, and execution history)
 
 Backend API (`apps/api`):
 - Auth & Multi-Tenant Workspaces ready (`/auth/*`, `/workspaces/*`, `/users/*`, `/health`)
@@ -121,17 +134,20 @@ Backend API (`apps/api`):
 - Script Engine ready (`/content/:id/script`, `/content/:id/script/versions`)
 - Storage & Media Engine ready (`/media-assets/*`, `/content/:id/media/*`, `/content/:id/render`, `/uploads/*`)
 - Social Publishing Engine ready (`/social/accounts/*`, `/content/:id/publish`, `/content/:id/schedule`, `/content/:id/publications`)
+- Automation & Webhook Engine ready (`/automation/rules/*`, `/automation/runs`, `/automation/status`, `/automation/webhook/:ruleId`)
+- Analytics Engine ready (`/content/:id/analytics/*`, `/analytics/summary`)
 
 Media Worker (`apps/media-worker`):
 - FFmpeg render pipeline and BullMQ render processor active
 
 Database:
-- Mongoose schemas registered (`users`, `refresh-tokens`, `workspaces`, `workspace-members`, `content`, `content-versions`, `researches`, `research-sources`, `research-facts`, `scripts`, `script-versions`, `media-assets`, `thumbnail-assets`, `voice-assets`, `social-accounts`, `publications`)
+- Mongoose schemas registered (`users`, `refresh-tokens`, `workspaces`, `workspace-members`, `content`, `content-versions`, `researches`, `research-sources`, `research-facts`, `scripts`, `script-versions`, `media-assets`, `thumbnail-assets`, `voice-assets`, `social-accounts`, `publications`, `automation-rules`, `automation-runs`, `analytics-snapshots`)
 - Connected to live MongoDB Atlas database
 
 ## Last Updated
 
 2026-08-29
+
 
 
 

@@ -30,6 +30,7 @@ import { ScriptTabView } from "./script-tab-view";
 import { MediaTabView } from "./media-tab-view";
 import { ThumbnailTabView } from "./thumbnail-tab-view";
 import { PublishingTabView } from "../../publishing/components/publishing-tab-view";
+import { AnalyticsTabView } from "./analytics-tab-view";
 
 import {
   useUpdateContentMutation,
@@ -297,22 +298,8 @@ export function ContentDetailsTabs({ content }: ContentDetailsTabsProps) {
 
       {/* 7. ANALYTICS TAB */}
       <TabsContent value="analytics" className="space-y-4">
-        <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6 space-y-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <h3 className="text-base font-semibold text-[var(--foreground)]">Performance Analytics</h3>
-              <p className="text-xs text-[var(--muted-foreground)]">
-                Views, watch time, retention curves, click-through rate, and engagement.
-              </p>
-            </div>
-            <Badge variant="secondary">Phase 11 Feature</Badge>
-          </div>
-          <div className="rounded-lg border border-dashed border-[var(--border)] p-8 text-center bg-[var(--muted)]/20">
-            <BarChart3 className="mx-auto h-8 w-8 text-[var(--muted-foreground)]/60" />
-            <p className="mt-2 text-sm text-[var(--muted-foreground)]">
-              Live analytics sync from YouTube/Facebook APIs will activate in Phase 11.
-            </p>
-          </div>
+        <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6">
+          <AnalyticsTabView content={content} />
         </div>
       </TabsContent>
 

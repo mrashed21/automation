@@ -52,6 +52,12 @@ const navSections: NavSection[] = [
     ],
   },
   {
+    label: "Automation",
+    items: [
+      { label: "Automation", href: "/dashboard/automation", icon: Zap },
+    ],
+  },
+  {
     label: "Insights",
     items: [
       { label: "Analytics", href: "/dashboard/analytics", icon: BarChart3 },

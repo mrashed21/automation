@@ -14,6 +14,8 @@ import { ScriptModule } from "./modules/script/script.module";
 import { StorageModule } from "./modules/storage/storage.module";
 import { MediaAssetsModule } from "./modules/media-assets/media-assets.module";
 import { PublishingModule } from "./modules/publishing/publishing.module";
+import { AutomationModule } from "./modules/automation/automation.module";
+import { AnalyticsModule } from "./modules/analytics/analytics.module";
 
 @Module({
   imports: [
@@ -70,6 +72,8 @@ import { PublishingModule } from "./modules/publishing/publishing.module";
     ScriptModule,
     MediaAssetsModule,
     PublishingModule,
+    AutomationModule,
+    AnalyticsModule,
   ],
 })
 export class AppModule {}

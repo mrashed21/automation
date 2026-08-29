@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.8.0] - 2026-08-29
+
+### Added - Phase 10: Automation Engine, n8n Webhooks & Analytics Sync
+
+- **Automation Engine Backend (`AutomationModule`)**:
+  - Mongoose schemas `AutomationRule` (cron schedule, webhook HMAC trigger, manual trigger, target platforms, daily quota, approval mode) and `AutomationRun` (embedded `PipelineStage` execution history tracking research, script, media, render, quality-check, and publish stages).
+  - `AutomationService` & `AutomationController`: REST endpoints for rule management (`GET/POST /api/v1/automation/rules`, `PATCH /api/v1/automation/rules/:id`, `POST /api/v1/automation/rules/:id/toggle`, `DELETE /api/v1/automation/rules/:id`, `POST /api/v1/automation/rules/:id/trigger`), run history querying (`GET /api/v1/automation/runs`), system status summary (`GET /api/v1/automation/status`), and HMAC `sha256` verified n8n webhook trigger (`POST /api/v1/automation/webhook/:ruleId`).
+- **Analytics Sync Engine Backend (`AnalyticsModule`)**:
+  - Mongoose schema `AnalyticsSnapshot` capturing time-series snapshots (views, likes, comments, shares, watch time, average duration, retention percent, CTR, subscribers/followers gained).
+  - `AnalyticsService` & `AnalyticsController`: Endpoints for content snapshot history (`GET /api/v1/content/:id/analytics/snapshots`), latest metrics per platform (`GET /api/v1/content/:id/analytics/latest`), manual sync trigger (`POST /api/v1/content/:id/analytics/sync`), and workspace-wide aggregated performance summary (`GET /api/v1/analytics/summary`).
+- **Frontend Analytics Studio (`AnalyticsTabView`)**:
+  - KPI metric cards with accent glow headers (Total Views, Likes, Comments, Shares, Avg CTR).
+  - Per-platform breakdown rows with individual retention curves and watch time stats.
+  - Interactive Recharts Area Chart displaying historical growth curves with metric switching (views, likes, comments, shares) and platform color-coded gradient fills.
+  - One-click "Sync Now" button wired to `useSyncAnalyticsMutation`.
+- **Frontend Automation Dashboard (`/dashboard/automation`)**:
+  - System health strip monitoring API, MongoDB, Redis, Worker, Media Worker, and n8n statuses.
+  - Live metric counters (Total Rules, Active Rules, Completed Today, Failed Today, Queued Jobs).
+  - Interactive rule management cards with enable/disable toggles, instant trigger buttons, and delete actions.
+  - Rule Builder Dialog modal supporting cron schedule presets, platform multi-selection, content-per-run slider, and approval mode pickers.
+  - Run History timeline view with color-coded stage progress dots and failure diagnostic logs.
+  - n8n Webhook integration reference card with signature requirements and endpoint URLs.
+- **Testing & Monorepo Verification**:
+  - Unit test suites for `AutomationService` and `AnalyticsService` (53 total passing unit tests across 4 packages).
+  - Zero errors across `pnpm type-check`, `pnpm lint`, `pnpm test`, and `pnpm build`.
+
+---
+
 ## [0.7.0] - 2026-08-29
 
 ### Added - Phase 08: Social Publishing Adapters & OAuth Integration
