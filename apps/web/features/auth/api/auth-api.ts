@@ -1,5 +1,5 @@
 import { baseApi } from "@/lib/api-client";
-import { setUser, setCurrentWorkspace, logout } from "@/store/slices/auth-slice";
+import { setCredentials, setUser, setCurrentWorkspace, logout } from "@/store/slices/auth-slice";
 import { setWorkspaces } from "@/store/slices/workspace-slice";
 import type { AuthResponseDto, UserDto, WorkspaceDto } from "@repo/types";
 import type { LoginInput, RegisterInput } from "@repo/validation";
@@ -15,8 +15,13 @@ export const authApi = baseApi.injectEndpoints({
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          dispatch(setUser(data.user));
-          dispatch(setCurrentWorkspace(data.activeWorkspace));
+          dispatch(
+            setCredentials({
+              user: data.user,
+              activeWorkspace: data.activeWorkspace,
+              accessToken: data.accessToken,
+            }),
+          );
           dispatch(setWorkspaces(data.workspaces));
         } catch {
           // handled by error state
@@ -33,8 +38,13 @@ export const authApi = baseApi.injectEndpoints({
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          dispatch(setUser(data.user));
-          dispatch(setCurrentWorkspace(data.activeWorkspace));
+          dispatch(
+            setCredentials({
+              user: data.user,
+              activeWorkspace: data.activeWorkspace,
+              accessToken: data.accessToken,
+            }),
+          );
           dispatch(setWorkspaces(data.workspaces));
         } catch {
           // handled by error state

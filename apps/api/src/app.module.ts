@@ -8,6 +8,9 @@ import { UsersModule } from "./modules/users/users.module";
 import { WorkspacesModule } from "./modules/workspaces/workspaces.module";
 import { AuthModule } from "./modules/auth/auth.module";
 import { ContentModule } from "./modules/content/content.module";
+import { AiModule } from "./modules/ai/ai.module";
+import { ResearchModule } from "./modules/research/research.module";
+import { ScriptModule } from "./modules/script/script.module";
 
 @Module({
   imports: [
@@ -50,12 +53,17 @@ import { ContentModule } from "./modules/content/content.module";
       inject: [ConfigService],
     }),
 
+    // Global AI Provider Abstraction
+    AiModule,
+
     // Feature modules
     HealthModule,
     UsersModule,
     WorkspacesModule,
     AuthModule,
     ContentModule,
+    ResearchModule,
+    ScriptModule,
   ],
 })
 export class AppModule {}

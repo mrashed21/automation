@@ -11,16 +11,31 @@ interface AuthGuardProps {
 
 export function AuthGuard({ children }: AuthGuardProps) {
   const router = useRouter();
-  const { isLoading, isError } = useGetMeQuery();
-  const { isAuthenticated, isLoading: authLoading } = useAppSelector((state) => state.auth);
+  const { user, isAuthenticated, isLoading: authLoading, accessToken } = useAppSelector(
+    (state) => state.auth,
+  );
+
+  const {
+    isLoading: meLoading,
+    isError,
+    isFetching,
+  } = useGetMeQuery(undefined, {
+    skip: !accessToken && !isAuthenticated,
+  });
+
+  const isCheckingSession = authLoading || (isFetching && !user) || (meLoading && !user);
 
   React.useEffect(() => {
-    if (!isLoading && !authLoading && (!isAuthenticated || isError)) {
-      router.push("/login");
+    if (!isCheckingSession) {
+      if (!isAuthenticated && !user && !accessToken) {
+        router.push("/login");
+      } else if (isError && !user) {
+        router.push("/login");
+      }
     }
-  }, [isLoading, authLoading, isAuthenticated, isError, router]);
+  }, [isCheckingSession, isAuthenticated, user, accessToken, isError, router]);
 
-  if (isLoading || authLoading) {
+  if (isCheckingSession) {
     return (
       <div className="flex h-screen w-full items-center justify-center bg-zinc-50 dark:bg-zinc-950">
         <div className="flex flex-col items-center space-y-4">
@@ -31,7 +46,7 @@ export function AuthGuard({ children }: AuthGuardProps) {
     );
   }
 
-  if (!isAuthenticated) {
+  if (!isAuthenticated && !user) {
     return null;
   }
 
