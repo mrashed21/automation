@@ -144,7 +144,9 @@ describe("MediaAssetsService", () => {
     }),
     deleteFile: jest.fn().mockResolvedValue(true),
     getPublicUrl: jest.fn().mockReturnValue("http://localhost:3010/uploads/test-key"),
+    calculateChecksum: jest.fn().mockReturnValue("abc123sha"),
   };
+
 
   const mockAiService = {
     generateVoice: jest.fn().mockResolvedValue({
@@ -242,4 +244,32 @@ describe("MediaAssetsService", () => {
     expect(mockAiService.generateImage).toHaveBeenCalled();
     expect(mockThumbnailModel.create).toHaveBeenCalled();
   });
+
+  it("should dispatch video render job and complete rendering pipeline", async () => {
+    const renderResult = await service.dispatchRenderJob(
+      mockWorkspaceId,
+      mockUserId,
+      mockContentId,
+      {
+        aspectRatio: "16:9",
+        resolution: "1080p",
+        includeSubtitles: true,
+        subtitleStyle: "highlight_pop",
+        includeMusic: true,
+        musicVolume: 0.15,
+      },
+    );
+
+    expect(renderResult.status).toBe("completed");
+    expect(renderResult.progressPercent).toBe(100);
+    expect(renderResult.videoUrl).toBeDefined();
+    expect(mockContent.save).toHaveBeenCalled();
+  });
+
+  it("should query video rendering pipeline status", async () => {
+    const status = await service.getRenderJobStatus(mockWorkspaceId, mockContentId);
+    expect(status.status).toBeDefined();
+    expect(status.progressPercent).toBeGreaterThanOrEqual(0);
+  });
 });
+

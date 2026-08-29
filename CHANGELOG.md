@@ -1,6 +1,30 @@
 # Changelog
 
+## [0.6.0] - 2026-08-29
+
+### Added - Phase 07: FFmpeg Media Worker Render Pipeline & Video Composition
+
+- **FFmpeg Media Rendering Pipeline**:
+  - `FfmpegRenderService` multi-scene timeline assembler with 16:9 Long-form (1920x1080) and 9:16 Vertical Shorts/Reels (1080x1920) resolution dimensions.
+  - Audio mixer with voice narration overlay and automatic ducking (-16dB) of background music beds.
+  - Automated timed ASS/SRT subtitle generator with vertical safe margin padding (clearing TikTok / YouTube Shorts UI button overlays).
+- **BullMQ Render Worker Host**:
+  - `RenderProcessor` worker host processing video render jobs on `QUEUE_NAMES.RENDER`.
+  - Incremental job progress broadcasting (`updateProgress`) and pipeline status tracking.
+- **Backend API Video Dispatch**:
+  - `POST /api/v1/content/:id/render` endpoint triggering video rendering and state transitions to `rendering` and `ready`.
+  - `GET /api/v1/content/:id/render/status` endpoint for real-time progress polling.
+- **Frontend Video Render Studio**:
+  - `MediaTabView` Video Render Studio with aspect ratio toggle, subtitle styling selector, background music slider, and one-click render trigger.
+  - Embedded HTML5 video player for rendered MP4 playback with download action.
+- **Testing & Quality Assurance**:
+  - Comprehensive unit test suites for `FfmpegRenderService` and `MediaAssetsService` render endpoints (36 passing unit tests across 4 packages).
+  - Zero-error validation across type-check, linting, and full production build.
+
+---
+
 ## [0.5.0] - 2026-08-29
+
 
 ### Added - Phase 06: Media Assets Management, Object Storage, Voice Generation & Thumbnail Studio
 

@@ -77,3 +77,43 @@ export interface PresignedUploadUrlDto {
   expiresInSeconds: number;
   headers?: Record<string, string>;
 }
+
+export interface SubtitleSegment {
+  startTimeMs: number;
+  endTimeMs: number;
+  text: string;
+  highlightWord?: string;
+}
+
+export interface RenderJobPayload {
+  contentId: string;
+  workspaceId: string;
+  userId: string;
+  aspectRatio: "16:9" | "9:16";
+  resolution: "1080p" | "720p";
+  includeSubtitles: boolean;
+  subtitleStyle: "highlight_pop" | "classic_box" | "subtle_clean";
+  includeMusic: boolean;
+  musicVolume: number;
+}
+
+export interface RenderJobResult {
+  mediaAssetId: string;
+  videoUrl: string;
+  durationSeconds: number;
+  sizeBytes: number;
+  width: number;
+  height: number;
+  fps: number;
+  storageKey: string;
+}
+
+export interface RenderStatusDto {
+  contentId: string;
+  status: "idle" | "queued" | "rendering" | "completed" | "failed";
+  progressPercent: number;
+  currentStep: string;
+  videoUrl?: string | null;
+  error?: string | null;
+}
+

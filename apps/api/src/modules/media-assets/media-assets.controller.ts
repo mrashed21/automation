@@ -25,7 +25,9 @@ import {
   generateVoiceNarrationSchema,
   generateThumbnailVariantsSchema,
   selectPrimaryThumbnailSchema,
+  startRenderJobSchema,
 } from "@repo/validation";
+
 
 @ApiTags("Media Assets")
 @ApiBearerAuth()
@@ -166,4 +168,31 @@ export class MediaAssetsController {
       input.thumbnailAssetId,
     );
   }
+
+  @Post("api/v1/content/:id/render")
+  @ApiOperation({ summary: "Trigger video rendering pipeline for content" })
+  async triggerRender(
+    @CurrentWorkspace() workspaceId: string,
+    @CurrentUser() user: { id: string },
+    @Param("id") contentId: string,
+    @Body() body: unknown,
+  ) {
+    const input = startRenderJobSchema.parse(body || {});
+    return this.mediaAssetsService.dispatchRenderJob(
+      workspaceId,
+      user.id,
+      contentId,
+      input,
+    );
+  }
+
+  @Get("api/v1/content/:id/render/status")
+  @ApiOperation({ summary: "Get video rendering pipeline status" })
+  async getRenderStatus(
+    @CurrentWorkspace() workspaceId: string,
+    @Param("id") contentId: string,
+  ) {
+    return this.mediaAssetsService.getRenderJobStatus(workspaceId, contentId);
+  }
 }
+

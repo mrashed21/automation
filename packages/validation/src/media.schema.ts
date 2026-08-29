@@ -75,3 +75,17 @@ export const selectPrimaryThumbnailSchema = z.object({
 });
 
 export type SelectPrimaryThumbnailInput = z.infer<typeof selectPrimaryThumbnailSchema>;
+
+export const startRenderJobSchema = z.object({
+  aspectRatio: z.enum(["16:9", "9:16"]).default("16:9"),
+  resolution: z.enum(["1080p", "720p"]).default("1080p"),
+  includeSubtitles: z.boolean().default(true),
+  subtitleStyle: z
+    .enum(["highlight_pop", "classic_box", "subtle_clean"])
+    .default("highlight_pop"),
+  includeMusic: z.boolean().default(true),
+  musicVolume: z.number().min(0).max(1).default(0.15),
+});
+
+export type StartRenderJobInput = z.infer<typeof startRenderJobSchema>;
+

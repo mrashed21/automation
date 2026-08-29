@@ -3,6 +3,9 @@ import { Module } from "@nestjs/common";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 
 import { QUEUE_NAMES } from "@repo/config";
+import { FfmpegRenderService } from "./services/ffmpeg-render.service";
+import { RenderProcessor } from "./processors/render.processor";
+
 
 /**
  * Media Worker module — Phase 0 foundation.
@@ -40,5 +43,8 @@ import { QUEUE_NAMES } from "@repo/config";
       { name: QUEUE_NAMES.COMPLIANCE },
     ),
   ],
+  providers: [FfmpegRenderService, RenderProcessor],
+  exports: [FfmpegRenderService],
 })
 export class MediaWorkerModule {}
+

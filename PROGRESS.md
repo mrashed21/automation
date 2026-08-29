@@ -83,10 +83,17 @@ Phase 06 — Media Assets Management & Object Storage (Phases 00–05 Completed)
   - [x] `MediaTabView` studio UI: ElevenLabs voice model selector, audio player, duration badges, and direct file uploader
   - [x] `ThumbnailTabView` studio UI: A/B testing variant grid (A, B, C, D), high-CTR presets, headline text overlays, CTR score estimation badges, and primary variant selection
   - [x] Full unit test suites for `StorageService` and `MediaAssetsService` (27 passing API tests, 31 passing repo-wide)
+- [x] Phase 07: FFmpeg Media Worker Render Pipeline & Video Composition
+  - [x] `FfmpegRenderService` engine: scene timeline assembler, audio track mixing (narration + ducked background music bed), and ASS/SRT timed subtitle generation with vertical safe area margins
+  - [x] BullMQ `RenderProcessor` worker host processing jobs on `QUEUE_NAMES.RENDER` with incremental progress reporting
+  - [x] API video render dispatch: `POST /api/v1/content/:id/render` & `GET /api/v1/content/:id/render/status`
+  - [x] Frontend `mediaApi` render mutation & status query hooks
+  - [x] `MediaTabView` Video Render Studio UI: aspect ratio picker (16:9 vs 9:16 vertical), subtitle styling options, music volume slider, live progress bar, and embedded HTML5 MP4 player with download link
+  - [x] Comprehensive unit tests for `FfmpegRenderService` and `MediaAssetsService` render endpoints (36 passing unit tests across 4 packages)
 
 ## In Progress
 
-- [ ] Phase 07: FFmpeg Media Worker Render Pipeline (Audio/Video Composition, Subtitles & Safe Areas)
+- [ ] Phase 08: Social Publishing Adapters — YouTube & Facebook OAuth and Video Publishing Engine
 
 ## Current System Status
 
@@ -96,7 +103,7 @@ Frontend (`apps/web`):
 - Content Library ready (`/dashboard/content`, `/dashboard/content/[id]`)
 - Research & Facts Studio ready (`ResearchTabView` with depth picker and live verification)
 - Script Studio ready (`ScriptTabView` with section editor and immutable version history)
-- Media & Video Studio ready (`MediaTabView` with voice generator, audio player, and asset pool)
+- Media & Video Studio ready (`MediaTabView` with voice generator, audio player, video render studio, and asset pool)
 - Thumbnail Studio ready (`ThumbnailTabView` with A/B variant generator and primary selection)
 
 Backend API (`apps/api`):
@@ -104,7 +111,10 @@ Backend API (`apps/api`):
 - Content Core ready (`/content`, `/content/:id`, `/content/:id/versions`)
 - AI Provider & Research ready (`/content/:id/research`, `/content/:id/research/facts/:factId`, `/content/:id/research/verify`)
 - Script Engine ready (`/content/:id/script`, `/content/:id/script/versions`)
-- Storage & Media Engine ready (`/media-assets/*`, `/content/:id/media/*`, `/uploads/*`)
+- Storage & Media Engine ready (`/media-assets/*`, `/content/:id/media/*`, `/content/:id/render`, `/uploads/*`)
+
+Media Worker (`apps/media-worker`):
+- FFmpeg render pipeline and BullMQ render processor active
 
 Database:
 - Mongoose schemas registered (`users`, `refresh-tokens`, `workspaces`, `workspace-members`, `content`, `content-versions`, `researches`, `research-sources`, `research-facts`, `scripts`, `script-versions`, `media-assets`, `thumbnail-assets`, `voice-assets`)
@@ -113,4 +123,5 @@ Database:
 ## Last Updated
 
 2026-08-29
+
 

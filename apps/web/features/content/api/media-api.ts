@@ -5,10 +5,12 @@ import type {
   ThumbnailAssetDto,
   VoiceAssetDto,
   MediaType,
+  RenderStatusDto,
 } from "@repo/types";
 import type {
   GenerateVoiceNarrationInput,
   GenerateThumbnailVariantsInput,
+  StartRenderJobInput,
 } from "@repo/validation";
 
 export const mediaApi = baseApi.injectEndpoints({
@@ -88,6 +90,28 @@ export const mediaApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["Content"],
     }),
+
+    startContentRender: builder.mutation<
+      RenderStatusDto,
+      { contentId: string; data: StartRenderJobInput }
+    >({
+      query: ({ contentId, data }) => ({
+        url: `/content/${contentId}/render`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: (_result, _error, { contentId }) => [
+        { type: "Content", id: contentId },
+        { type: "Content", id: `MEDIA_${contentId}` },
+      ],
+    }),
+
+    getRenderStatus: builder.query<RenderStatusDto, string>({
+      query: (contentId: string) => `/content/${contentId}/render/status`,
+      providesTags: (_result, _error, contentId) => [
+        { type: "Content", id: `RENDER_${contentId}` },
+      ],
+    }),
   }),
 });
 
@@ -98,4 +122,6 @@ export const {
   useGenerateThumbnailVariantsMutation,
   useSelectPrimaryThumbnailMutation,
   useDeleteMediaAssetMutation,
+  useStartContentRenderMutation,
+  useGetRenderStatusQuery,
 } = mediaApi;

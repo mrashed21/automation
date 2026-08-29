@@ -1,19 +1,18 @@
 # Pending Work
 
-## High Priority (Phase 07 — FFmpeg Media Worker Render Pipeline)
+## High Priority (Phase 08-09 — Social Publishing Adapters)
 
-- [ ] Media worker FFmpeg render pipeline (audio/video composition, subtitles & safe areas)
+- [ ] YouTube OAuth & Video Publishing Adapter (Resumable upload, privacy, category, tags)
+- [ ] Facebook / Instagram OAuth & Reels Publishing Adapter
 
-## Medium Priority (Phase 08-09 — Social Publishing Adapters)
-
-- [ ] YouTube OAuth & Publishing adapter
-- [ ] Facebook OAuth & Publishing adapter
-
-## Low Priority (Phase 10-12 — Automation, Analytics & Autonomous Loop)
+## Medium Priority (Phase 10-11 — Automation & Analytics Sync)
 
 - [ ] n8n webhook integrations & automated trigger workflows
-- [ ] Analytics sync & snapshot collection
-- [ ] Autonomous Strategist Agent & loop optimization
+- [ ] Analytics sync & snapshot collection (views, watch time, CTR, retention curves)
+
+## Low Priority (Phase 12 — Autonomous Loop)
+
+- [ ] Autonomous Strategist Agent & self-optimizing content loop
 
 ## Blocked
 
@@ -30,4 +29,6 @@ None.
 - [x] Phase 04: AI Provider Abstraction & Autonomous Research Agent (`AiService`, `GeminiTextProvider`, retry pipeline, `ResearchModule` CRUD, authoritative sources synthesis, fact claim extraction, `ResearchTabView`)
 - [x] Phase 05: Script Generator & Versioning Engine (`ScriptModule` multi-section generator, duration & pacing calculation, immutable `ScriptVersion` history, manual studio editor, `ScriptTabView`)
 - [x] Phase 06: Media Assets Management, Object Storage, Voice Generation & Thumbnail Studio (`StorageService`, `MediaAssetsModule`, ElevenLabs voice synthesizer, A/B thumbnail generator, `MediaTabView`, `ThumbnailTabView`)
+- [x] Phase 07: FFmpeg Media Worker Render Pipeline & Video Composition (`FfmpegRenderService`, `RenderProcessor`, BullMQ queue dispatch, subtitle safe zones, `MediaTabView` Video Render Studio)
+
 
