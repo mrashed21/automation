@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-Phase 03 — Content Core & Library (Phase 02 Dashboard & Workspace Shell Completed)
+Phase 04 — AI Providers & Autonomous Research Agent (Phase 03 Content Core & Library Completed)
 
 ## Completed
 
@@ -43,59 +43,41 @@ Phase 03 — Content Core & Library (Phase 02 Dashboard & Workspace Shell Comple
   - [x] `/dashboard` — home page with metric cards and activity placeholder
   - [x] `/dashboard/settings/workspace` — workspace settings page
   - [x] `/dashboard/settings/team` — team members management page
-  - [x] Zero-error verification for type-check and lint (2 RHF `watch()` compiler info warnings only)
+  - [x] Zero-error verification for type-check and lint
+- [x] Phase 03: Content Core & Library
+  - [x] Mongoose `Content` schema with multi-tenant workspace isolation and compound indexes
+  - [x] Mongoose `ContentVersion` schema with immutable snapshot tracking per revision
+  - [x] NestJS `ContentService` with pagination, search, status/type filters, version recording on edit, and cascaded cleanup
+  - [x] NestJS `ContentController` (`/api/v1/content`) guarded with `JwtAuthGuard`, `WorkspaceGuard`, and `RolesGuard`
+  - [x] Radix UI primitives (`Tabs`, `Dialog`)
+  - [x] `ContentStatusBadge` supporting all 15 pipeline lifecycle states with curated visual indicators
+  - [x] `ContentFilterBar` with live search, status and type dropdowns, table/grid mode toggles, and creation modal trigger
+  - [x] `ContentTable` view with metadata, version, timestamps, direct navigation, and action dropdowns
+  - [x] `ContentGrid` view with responsive cards, visual badges, and quick actions
+  - [x] `CreateContentDialog` with form validation, workspace bindings, and seamless redirect to content inspector
+  - [x] `ContentDetailsTabs` 8-tab inspector: Overview (editable metadata + version increment), Script, Research & Facts, Media & Video, Thumbnail, Publishing, Analytics, and Immutable Version History
+  - [x] `/dashboard/content` — Content Library page with live RTK Query synchronization
+  - [x] `/dashboard/content/[id]` — Content Details page with breadcrumb navigation
+  - [x] Zero-error verification for type-check and lint
 
 ## In Progress
 
-- [ ] Phase 03: Content Core & Library
-
-## Recently Completed
-
-### 2026-08-29
-
-- Implemented full Phase 02 Dashboard & Workspace Shell.
-- Built collapsible sidebar with workspace switcher, themed navigation, and tooltip support in collapsed mode.
-- Wired sidebar collapse, theme toggle, and workspace selection to existing Redux slices (no new slices needed).
-- Built workspace settings form and team members management UI backed by existing RTK Query mutations.
-- Installed Radix UI primitives (DropdownMenu, Avatar, Select, Separator, Tooltip) and wrote shadcn-compatible wrappers.
-- Verified zero type errors (`pnpm type-check`) and zero lint errors (`pnpm lint`).
+- [ ] Phase 04: AI Providers & Autonomous Research Agent
 
 ## Current System Status
 
 Frontend (`apps/web`):
-Auth & Workspace UI ready (`/login`, `/register`, landing page)
-Dashboard shell ready (`/dashboard`, `/dashboard/settings/workspace`, `/dashboard/settings/team`)
-Sidebar, header, workspace switcher, user menu, theme toggle all functional
+- Auth & Workspace UI ready (`/login`, `/register`, landing page)
+- Dashboard shell ready (`/dashboard`, `/dashboard/settings/workspace`, `/dashboard/settings/team`)
+- Content Library ready (`/dashboard/content`, `/dashboard/content/[id]`)
 
 Backend API (`apps/api`):
-Auth & Multi-Tenant Workspaces ready (`/auth/*`, `/workspaces/*`, `/users/*`, `/health`)
-
-Workers (`apps/worker` & `apps/media-worker`):
-Foundation ready (BullMQ queue registration, builds cleanly)
+- Auth & Multi-Tenant Workspaces ready (`/auth/*`, `/workspaces/*`, `/users/*`, `/health`)
+- Content Core ready (`/content`, `/content/:id`, `/content/:id/versions`)
 
 Database:
-Mongoose schemas registered (`users`, `refresh-tokens`, `workspaces`, `workspace-members`)
-
-Cache & Queues:
-Redis configured with BullMQ queues
-
-Storage:
-MinIO S3 configuration defined
-
-Authentication:
-Completed (JWT + HttpOnly cookie refresh token rotation + RBAC)
-
-Content Pipeline:
-Not implemented (Phase 03+)
-
-AI Agents & Pipelines:
-Not implemented (Phase 04+)
-
-Publishing & Social Adapters:
-Not implemented (Phase 08-09)
-
-Analytics:
-Not implemented (Phase 11)
+- Mongoose schemas registered (`users`, `refresh-tokens`, `workspaces`, `workspace-members`, `content`, `content-versions`)
+- Connected to live MongoDB Atlas database
 
 ## Last Updated
 

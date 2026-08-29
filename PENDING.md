@@ -1,19 +1,17 @@
 # Pending Work
 
-## High Priority (Phase 03 — Content Core & Library)
-
-- [ ] Content schema & models (`content`, `content-versions`)
-- [ ] Content CRUD API (`/api/v1/content`) with workspace isolation
-- [ ] Content Library UI (grid/table view, filter bar, status badges)
-- [ ] Content details tabs (Overview, Script, Research, Facts, Media, Video, Thumbnail, Publishing, Analytics, Activity, Versions)
-
-## Medium Priority (Phase 04-07 — AI & Media Pipelines)
+## High Priority (Phase 04-05 — AI Research, Scripting & Fact-Checking)
 
 - [ ] AI Provider abstraction layer (`AiTextProvider`, `AiImageProvider`, `AiVoiceProvider`)
-- [ ] Research agent & fact verification engine
-- [ ] Script generator & versioning engine
-- [ ] Media asset management & object storage (MinIO/S3)
-- [ ] Media worker FFmpeg render pipeline
+- [ ] Research agent & fact verification engine (`/api/v1/content/:id/research`, sources & claims)
+- [ ] Script generator & versioning engine (`/api/v1/content/:id/script`, script revisions)
+
+## Medium Priority (Phase 06-07 — Media Assets & FFmpeg Worker)
+
+- [ ] Media asset management & object storage (MinIO/S3 upload and presigned URLs)
+- [ ] Voice generation pipeline (ElevenLabs/TTS)
+- [ ] Thumbnail generation & variant testing
+- [ ] Media worker FFmpeg render pipeline (audio/video composition)
 
 ## Low Priority (Phase 08-12 — Publishing, Automation & Autonomous Loop)
 
@@ -31,6 +29,7 @@ None.
 
 ## Completed
 
-- [x] Phase 00: Foundation (Monorepo, shared packages, Next.js web, NestJS API, workers, Docker, CI, tests)
+- [x] Phase 00: Foundation (Monorepo, shared packages, Next.js web, NestJS API, workers, CI, tests)
 - [x] Phase 01: Authentication & Workspaces (JWT, refresh token cookies, RBAC, Mongoose schemas, auth pages, RTK Query)
 - [x] Phase 02: Dashboard & Workspace Shell (collapsible sidebar, workspace switcher, user menu, theme toggle, metric cards, workspace settings form, team members management UI)
+- [x] Phase 03: Content Core & Library (Mongoose schemas, ContentModule CRUD API with workspace isolation, immutable ContentVersion tracking, Content Library table/grid views, filters, creation dialog, 8-tab details inspector)

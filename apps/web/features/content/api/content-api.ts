@@ -1,6 +1,10 @@
 import { baseApi } from "@/lib/api-client";
 
-import type { ContentDto, PaginatedResponse } from "@repo/types";
+import type {
+  ContentDto,
+  ContentVersionDto,
+  PaginatedResponse,
+} from "@repo/types";
 import type { CreateContentInput, UpdateContentInput } from "@repo/validation";
 
 /**
@@ -11,11 +15,25 @@ export const contentApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getContents: builder.query<
       PaginatedResponse<ContentDto>,
-      { workspaceId: string; page?: number; limit?: number; status?: string }
+      {
+        workspaceId?: string;
+        page?: number;
+        limit?: number;
+        status?: string;
+        contentType?: string;
+        search?: string;
+      }
     >({
-      query: ({ workspaceId, page = 1, limit = 20, status }) => ({
+      query: ({ workspaceId, page = 1, limit = 20, status, contentType, search }) => ({
         url: "/content",
-        params: { workspaceId, page, limit, ...(status && { status }) },
+        params: {
+          ...(workspaceId && { workspaceId }),
+          page,
+          limit,
+          ...(status && { status }),
+          ...(contentType && { contentType }),
+          ...(search && { search }),
+        },
       }),
       providesTags: (result) =>
         result
@@ -29,6 +47,11 @@ export const contentApi = baseApi.injectEndpoints({
     getContentById: builder.query<ContentDto, string>({
       query: (id) => `/content/${id}`,
       providesTags: (_result, _error, id) => [{ type: "Content", id }],
+    }),
+
+    getContentVersions: builder.query<ContentVersionDto[], string>({
+      query: (id) => `/content/${id}/versions`,
+      providesTags: (_result, _error, id) => [{ type: "Content", id: `VERSIONS_${id}` }],
     }),
 
     createContent: builder.mutation<ContentDto, CreateContentInput>({
@@ -49,6 +72,7 @@ export const contentApi = baseApi.injectEndpoints({
       invalidatesTags: (_result, _error, { id }) => [
         { type: "Content", id },
         { type: "Content", id: "LIST" },
+        { type: "Content", id: `VERSIONS_${id}` },
       ],
     }),
 
@@ -77,8 +101,10 @@ export const contentApi = baseApi.injectEndpoints({
 export const {
   useGetContentsQuery,
   useGetContentByIdQuery,
+  useGetContentVersionsQuery,
   useCreateContentMutation,
   useUpdateContentMutation,
   useDeleteContentMutation,
   useTriggerContentGenerationMutation,
 } = contentApi;
+

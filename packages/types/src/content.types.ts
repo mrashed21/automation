@@ -37,12 +37,33 @@ export interface ContentDto {
   language: string;
   niche: Nullable<string>;
   status: ContentStatus;
+  currentVersion: number;
   qualityScore: Nullable<number>;
   complianceStatus: ComplianceStatus;
   scheduledAt: Nullable<string>;
   publishedAt: Nullable<string>;
   createdAt: string;
   updatedAt: string;
+}
+
+/** Content version contract for history tracking */
+export interface ContentVersionDto {
+  id: string;
+  contentId: string;
+  workspaceId: string;
+  version: number;
+  title: string;
+  description: Nullable<string>;
+  contentType: ContentType;
+  language: string;
+  niche: Nullable<string>;
+  scriptId: Nullable<string>;
+  thumbnailAssetId: Nullable<string>;
+  videoAssetId: Nullable<string>;
+  changeReason: string;
+  source: string;
+  createdBy: string;
+  createdAt: string;
 }
 
 /** Content asset provenance — internal tracking */
