@@ -14,6 +14,7 @@ export * from "./workspace.types";
 export * from "./auth.types";
 export * from "./common.types";
 export * from "./publishing.types";
+export * from "./strategy.types";
 
 
 

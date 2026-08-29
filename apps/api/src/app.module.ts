@@ -16,6 +16,7 @@ import { MediaAssetsModule } from "./modules/media-assets/media-assets.module";
 import { PublishingModule } from "./modules/publishing/publishing.module";
 import { AutomationModule } from "./modules/automation/automation.module";
 import { AnalyticsModule } from "./modules/analytics/analytics.module";
+import { StrategyModule } from "./modules/strategy/strategy.module";
 
 @Module({
   imports: [
@@ -74,6 +75,7 @@ import { AnalyticsModule } from "./modules/analytics/analytics.module";
     PublishingModule,
     AutomationModule,
     AnalyticsModule,
+    StrategyModule,
   ],
 })
 export class AppModule {}

@@ -109,9 +109,21 @@ Phase 06 — Media Assets Management & Object Storage (Phases 00–05 Completed)
   - [x] Comprehensive unit test suites for `AutomationService` and `AnalyticsService` (53 total passing unit tests across monorepo)
   - [x] Monorepo verification: `pnpm type-check` (10/10 packages), `pnpm lint` (0 errors), `pnpm test` (53/53 passing), `pnpm build` (7/7 packages clean)
 
+- [x] Phase 12: Autonomous Strategist Agent & Continuous Improvement Feedback Loop
+  - [x] Shared `@repo/types` and `@repo/validation` strategy contracts (`ContentOpportunityDto`, `StrategyInsightDto`, `TopicDiversityResultDto`, `autoDiscoverTopicsSchema`, `checkTopicDiversitySchema`)
+  - [x] Mongoose schema `StrategyRecommendation` with compound indexes on `(workspaceId, status, createdAt)` and `(workspaceId, estimatedScore)`
+  - [x] NestJS `StrategyModule`: `StrategyService` & `StrategyController` (`GET /api/v1/strategy/opportunities`, `POST /api/v1/strategy/discover`, `POST /api/v1/strategy/opportunities/:id/produce`, `PATCH /api/v1/strategy/opportunities/:id/reject`, `POST /api/v1/strategy/diversity-check`, `GET /api/v1/strategy/insights`)
+  - [x] Autonomous opportunity discovery using Gemini AI with structured schema validation and high-yield creative fallbacks
+  - [x] Token Jaccard diversity checking preventing topic collision and repetitive angles across the content library
+  - [x] Direct one-click pipeline production launching research, scripting, media sourcing, and publishing workflows
+  - [x] Continuous feedback loop aggregating historical `AnalyticsSnapshot` metrics into optimal posting windows, format balances, and top hook patterns
+  - [x] Frontend Strategy Studio (`/dashboard/strategy`): Strategic KPI header, opportunity card grid with viral potential meters, suggested hooks drawers, topic discovery modal, and sidebar navigation
+  - [x] Comprehensive unit test suites for `StrategyService` (59 total passing unit tests across monorepo)
+  - [x] Monorepo verification: `pnpm type-check` (10/10 packages clean), `pnpm lint` (0 errors), `pnpm test` (59/59 passing), `pnpm build` (7/7 packages clean)
+
 ## In Progress
 
-- [ ] Phase 12: Autonomous Strategist Agent & Continuous Improvement Feedback Loop
+- [ ] Extended third-party integrations (TikTok & LinkedIn)
 
 ## Current System Status
 
@@ -126,6 +138,7 @@ Frontend (`apps/web`):
 - Publishing & Social Studio ready (`PublishingTabView` with YouTube & Facebook adapters and live post links)
 - Analytics Studio ready (`AnalyticsTabView` with multi-platform cards, sync trigger, and Recharts growth curves)
 - Automation Dashboard ready (`/dashboard/automation` with health strip, rule modal, trigger action, and execution history)
+- Autonomous Strategy Studio ready (`/dashboard/strategy` with AI opportunity discovery, diversity engine, and feedback loop)
 
 Backend API (`apps/api`):
 - Auth & Multi-Tenant Workspaces ready (`/auth/*`, `/workspaces/*`, `/users/*`, `/health`)
@@ -136,12 +149,13 @@ Backend API (`apps/api`):
 - Social Publishing Engine ready (`/social/accounts/*`, `/content/:id/publish`, `/content/:id/schedule`, `/content/:id/publications`)
 - Automation & Webhook Engine ready (`/automation/rules/*`, `/automation/runs`, `/automation/status`, `/automation/webhook/:ruleId`)
 - Analytics Engine ready (`/content/:id/analytics/*`, `/analytics/summary`)
+- Strategy & Autonomous Loop Engine ready (`/strategy/opportunities/*`, `/strategy/discover`, `/strategy/diversity-check`, `/strategy/insights`)
 
 Media Worker (`apps/media-worker`):
 - FFmpeg render pipeline and BullMQ render processor active
 
 Database:
-- Mongoose schemas registered (`users`, `refresh-tokens`, `workspaces`, `workspace-members`, `content`, `content-versions`, `researches`, `research-sources`, `research-facts`, `scripts`, `script-versions`, `media-assets`, `thumbnail-assets`, `voice-assets`, `social-accounts`, `publications`, `automation-rules`, `automation-runs`, `analytics-snapshots`)
+- Mongoose schemas registered (`users`, `refresh-tokens`, `workspaces`, `workspace-members`, `content`, `content-versions`, `researches`, `research-sources`, `research-facts`, `scripts`, `script-versions`, `media-assets`, `thumbnail-assets`, `voice-assets`, `social-accounts`, `publications`, `automation-rules`, `automation-runs`, `analytics-snapshots`, `strategy-recommendations`)
 - Connected to live MongoDB Atlas database
 
 ## Last Updated

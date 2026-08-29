@@ -12,6 +12,7 @@ import {
   PanelLeftClose,
   PanelLeftOpen,
   Zap,
+  Target,
 } from "lucide-react";
 
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -60,6 +61,7 @@ const navSections: NavSection[] = [
   {
     label: "Insights",
     items: [
+      { label: "Strategy & AI", href: "/dashboard/strategy", icon: Target },
       { label: "Analytics", href: "/dashboard/analytics", icon: BarChart3 },
     ],
   },

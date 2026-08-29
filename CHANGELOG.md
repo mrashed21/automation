@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.9.0] - 2026-08-29
+
+### Added - Phase 12: Autonomous Strategist Agent & Continuous Improvement Loop
+
+- **Autonomous Strategist Backend (`StrategyModule`)**:
+  - Mongoose schema `StrategyRecommendation` with compound indexes for fast status filtering and score ranking.
+  - `StrategyService` & `StrategyController`: AI opportunity discovery (`POST /api/v1/strategy/discover`), topic diversity checking (`POST /api/v1/strategy/diversity-check`), direct pipeline production conversion (`POST /api/v1/strategy/opportunities/:id/produce`), opportunity dismissal (`PATCH /api/v1/strategy/opportunities/:id/reject`), and multi-platform performance insights (`GET /api/v1/strategy/insights`).
+  - Strict Zod schema validation for structured JSON generation with Google Gemini.
+  - Jaccard token similarity engine preventing topic collisions and repetitive angles.
+- **Frontend Autonomous Strategy Studio (`/dashboard/strategy`)**:
+  - Strategic KPI header with overall Strategy Index (0-100), format ratio balance bars, peak publishing windows, and algorithmic growth observations.
+  - Real-time Opportunity Feed with format filters (Shorts vs Long-form) and status tabs (Suggested vs In Production).
+  - Interactive `OpportunityCard` with viral potential score meter, suggested 0-3s opening hooks drawer, and one-click "Produce Video" action.
+  - Topic Discovery Dialog modal with niche input and format focus selectors.
+  - Sidebar navigation updated with "Strategy & AI" menu item.
+- **Testing & Monorepo Verification**:
+  - Comprehensive unit test suites for `StrategyService` (59 total passing unit tests across monorepo).
+  - 100% clean verification across `type-check`, `lint`, `test`, and `build` (7/7 production packages).
+
+---
+
 ## [0.8.0] - 2026-08-29
 
 ### Added - Phase 10: Automation Engine, n8n Webhooks & Analytics Sync
