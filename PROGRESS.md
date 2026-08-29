@@ -90,10 +90,17 @@ Phase 06 — Media Assets Management & Object Storage (Phases 00–05 Completed)
   - [x] Frontend `mediaApi` render mutation & status query hooks
   - [x] `MediaTabView` Video Render Studio UI: aspect ratio picker (16:9 vs 9:16 vertical), subtitle styling options, music volume slider, live progress bar, and embedded HTML5 MP4 player with download link
   - [x] Comprehensive unit tests for `FfmpegRenderService` and `MediaAssetsService` render endpoints (36 passing unit tests across 4 packages)
+- [x] Phase 08: Social Publishing Adapters — YouTube & Facebook OAuth and Video Publishing Engine
+  - [x] Shared `@repo/types` and `@repo/validation` publishing contracts (`SocialAccountDto`, `PublicationRecordDto`, `createPublicationSchema`, `connectSocialAccountSchema`)
+  - [x] Mongoose schemas: `SocialAccount` (encrypted token storage, OAuth expiration tracking) and `Publication` (external post IDs, video URLs, error logs)
+  - [x] NestJS `PublishingModule`: `YouTubePublisher` adapter, `FacebookPublisher` adapter, and `PublishingService` (`GET /api/v1/social/accounts`, `POST /api/v1/social/accounts/connect`, `DELETE /api/v1/social/accounts/:id`, `GET /api/v1/content/:id/publications`, `POST /api/v1/content/:id/publish`, `POST /api/v1/content/:id/schedule`)
+  - [x] Frontend `publishingApi` RTK Query slice with automatic cache tag invalidation
+  - [x] `PublishingTabView` Studio UI: connected channel cards, quick connect modal, platform switcher (YouTube vs Facebook), SEO metadata inputs, privacy & category selectors, instant & scheduled publishing actions, and live external video links
+  - [x] Comprehensive unit test suites for `PublishingService` (41 passing unit tests repo-wide)
 
 ## In Progress
 
-- [ ] Phase 08: Social Publishing Adapters — YouTube & Facebook OAuth and Video Publishing Engine
+- [ ] Phase 10: Automation Engine & n8n Webhook Triggers (Automated Pipeline Execution & Scheduled Content Runs)
 
 ## Current System Status
 
@@ -105,6 +112,7 @@ Frontend (`apps/web`):
 - Script Studio ready (`ScriptTabView` with section editor and immutable version history)
 - Media & Video Studio ready (`MediaTabView` with voice generator, audio player, video render studio, and asset pool)
 - Thumbnail Studio ready (`ThumbnailTabView` with A/B variant generator and primary selection)
+- Publishing & Social Studio ready (`PublishingTabView` with YouTube & Facebook adapters and live post links)
 
 Backend API (`apps/api`):
 - Auth & Multi-Tenant Workspaces ready (`/auth/*`, `/workspaces/*`, `/users/*`, `/health`)
@@ -112,16 +120,18 @@ Backend API (`apps/api`):
 - AI Provider & Research ready (`/content/:id/research`, `/content/:id/research/facts/:factId`, `/content/:id/research/verify`)
 - Script Engine ready (`/content/:id/script`, `/content/:id/script/versions`)
 - Storage & Media Engine ready (`/media-assets/*`, `/content/:id/media/*`, `/content/:id/render`, `/uploads/*`)
+- Social Publishing Engine ready (`/social/accounts/*`, `/content/:id/publish`, `/content/:id/schedule`, `/content/:id/publications`)
 
 Media Worker (`apps/media-worker`):
 - FFmpeg render pipeline and BullMQ render processor active
 
 Database:
-- Mongoose schemas registered (`users`, `refresh-tokens`, `workspaces`, `workspace-members`, `content`, `content-versions`, `researches`, `research-sources`, `research-facts`, `scripts`, `script-versions`, `media-assets`, `thumbnail-assets`, `voice-assets`)
+- Mongoose schemas registered (`users`, `refresh-tokens`, `workspaces`, `workspace-members`, `content`, `content-versions`, `researches`, `research-sources`, `research-facts`, `scripts`, `script-versions`, `media-assets`, `thumbnail-assets`, `voice-assets`, `social-accounts`, `publications`)
 - Connected to live MongoDB Atlas database
 
 ## Last Updated
 
 2026-08-29
+
 
 

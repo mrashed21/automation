@@ -9,5 +9,7 @@ export * from "./script.schema";
 export * from "./media.schema";
 export * from "./schedule.schema";
 export * from "./platform.schema";
+export * from "./publishing.schema";
+
 
 

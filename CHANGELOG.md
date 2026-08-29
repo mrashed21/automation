@@ -1,6 +1,27 @@
 # Changelog
 
+## [0.7.0] - 2026-08-29
+
+### Added - Phase 08: Social Publishing Adapters & OAuth Integration
+
+- **Social Publishing Adapters**:
+  - `YouTubePublisher`: YouTube Data API v3 integration handling video uploads, category IDs, privacy visibility (`public`, `unlisted`, `private`), and custom tags.
+  - `FacebookPublisher`: Meta Graph API / Reels publisher handling video post creation, page access token authorization, and caption/tag formatting.
+- **Publishing Backend Module (`PublishingModule`)**:
+  - Mongoose schemas `SocialAccount` and `Publication` with compound workspace indexes and token lifetime tracking.
+  - `PublishingService` & `PublishingController`: Endpoints for OAuth account linking (`POST /api/v1/social/accounts/connect`), account disconnection (`DELETE /api/v1/social/accounts/:id`), immediate video publishing (`POST /api/v1/content/:id/publish`), scheduled publishing (`POST /api/v1/content/:id/schedule`), and publication history retrieval (`GET /api/v1/content/:id/publications`).
+- **Frontend Publishing Studio (`PublishingTabView`)**:
+  - Connected Channels & Pages banner with real-time status indicators and quick-connect OAuth modal.
+  - Interactive publishing studio form with target platform switcher (YouTube vs Facebook), SEO metadata inputs, category selector, privacy controls, and schedule date/time picker.
+  - Live publication list displaying direct links to published YouTube/Facebook videos, status badges, and account attribution.
+- **Testing & Quality Assurance**:
+  - Unit tests for `PublishingService` (41 passing tests repo-wide).
+  - Clean validation across `type-check`, `lint`, and full production build.
+
+---
+
 ## [0.6.0] - 2026-08-29
+
 
 ### Added - Phase 07: FFmpeg Media Worker Render Pipeline & Video Composition
 

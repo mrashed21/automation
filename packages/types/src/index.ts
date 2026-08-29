@@ -12,5 +12,7 @@ export * from "./analytics.types";
 export * from "./workspace.types";
 export * from "./auth.types";
 export * from "./common.types";
+export * from "./publishing.types";
+
 
 

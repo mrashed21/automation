@@ -1,22 +1,22 @@
 # Pending Work
 
-## High Priority (Phase 08-09 — Social Publishing Adapters)
-
-- [ ] YouTube OAuth & Video Publishing Adapter (Resumable upload, privacy, category, tags)
-- [ ] Facebook / Instagram OAuth & Reels Publishing Adapter
-
-## Medium Priority (Phase 10-11 — Automation & Analytics Sync)
+## High Priority (Phase 10-11 — Automation & Analytics Sync)
 
 - [ ] n8n webhook integrations & automated trigger workflows
 - [ ] Analytics sync & snapshot collection (views, watch time, CTR, retention curves)
 
-## Low Priority (Phase 12 — Autonomous Loop)
+## Medium Priority (Phase 12 — Autonomous Loop)
 
 - [ ] Autonomous Strategist Agent & self-optimizing content loop
+
+## Low Priority
+
+- [ ] Extended third-party integrations (TikTok & LinkedIn)
 
 ## Blocked
 
 None.
+
 
 ---
 
@@ -30,5 +30,7 @@ None.
 - [x] Phase 05: Script Generator & Versioning Engine (`ScriptModule` multi-section generator, duration & pacing calculation, immutable `ScriptVersion` history, manual studio editor, `ScriptTabView`)
 - [x] Phase 06: Media Assets Management, Object Storage, Voice Generation & Thumbnail Studio (`StorageService`, `MediaAssetsModule`, ElevenLabs voice synthesizer, A/B thumbnail generator, `MediaTabView`, `ThumbnailTabView`)
 - [x] Phase 07: FFmpeg Media Worker Render Pipeline & Video Composition (`FfmpegRenderService`, `RenderProcessor`, BullMQ queue dispatch, subtitle safe zones, `MediaTabView` Video Render Studio)
+- [x] Phase 08: Social Publishing Adapters (`YouTubePublisher`, `FacebookPublisher`, `PublishingModule`, OAuth account linking, instant & scheduled video publishing, `PublishingTabView`)
+
 
 

@@ -93,7 +93,10 @@ export const baseApi = createApi({
     "Script",
     "MediaAsset",
     "Publishing",
+    "SocialAccount",
+    "Publication",
     "Analytics",
+
     "Platform",
     "Workspace",
     "User",

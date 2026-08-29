@@ -29,6 +29,8 @@ import { ResearchTabView } from "./research-tab-view";
 import { ScriptTabView } from "./script-tab-view";
 import { MediaTabView } from "./media-tab-view";
 import { ThumbnailTabView } from "./thumbnail-tab-view";
+import { PublishingTabView } from "../../publishing/components/publishing-tab-view";
+
 import {
   useUpdateContentMutation,
   useGetContentVersionsQuery,
@@ -287,25 +289,11 @@ export function ContentDetailsTabs({ content }: ContentDetailsTabsProps) {
 
 
       {/* 6. PUBLISHING TAB */}
+      {/* 6. PUBLISHING TAB */}
       <TabsContent value="publishing" className="space-y-4">
-        <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6 space-y-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <h3 className="text-base font-semibold text-[var(--foreground)]">Publishing & Scheduling</h3>
-              <p className="text-xs text-[var(--muted-foreground)]">
-                Target YouTube and Facebook channels, tags, categories, and calendar schedule.
-              </p>
-            </div>
-            <Badge variant="secondary">Phase 08 Feature</Badge>
-          </div>
-          <div className="rounded-lg border border-dashed border-[var(--border)] p-8 text-center bg-[var(--muted)]/20">
-            <Send className="mx-auto h-8 w-8 text-[var(--muted-foreground)]/60" />
-            <p className="mt-2 text-sm text-[var(--muted-foreground)]">
-              Social publishing adapters (YouTube & Meta) connect in Phase 08.
-            </p>
-          </div>
-        </div>
+        <PublishingTabView content={content} />
       </TabsContent>
+
 
       {/* 7. ANALYTICS TAB */}
       <TabsContent value="analytics" className="space-y-4">

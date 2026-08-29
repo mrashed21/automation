@@ -13,6 +13,7 @@ import { ResearchModule } from "./modules/research/research.module";
 import { ScriptModule } from "./modules/script/script.module";
 import { StorageModule } from "./modules/storage/storage.module";
 import { MediaAssetsModule } from "./modules/media-assets/media-assets.module";
+import { PublishingModule } from "./modules/publishing/publishing.module";
 
 @Module({
   imports: [
@@ -68,7 +69,9 @@ import { MediaAssetsModule } from "./modules/media-assets/media-assets.module";
     ResearchModule,
     ScriptModule,
     MediaAssetsModule,
+    PublishingModule,
   ],
 })
 export class AppModule {}
+
 
