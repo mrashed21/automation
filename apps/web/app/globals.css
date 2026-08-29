@@ -5,82 +5,82 @@
    ───────────────────────────────────────────── */
 :root {
   /* Core palette */
-  --background: hsl(0 0% 100%);
-  --foreground: hsl(240 10% 4%);
-  --muted: hsl(240 5% 96%);
-  --muted-foreground: hsl(240 4% 46%);
+  --background: hsl(220 20% 98%);
+  --foreground: hsl(224 71% 4%);
+  --muted: hsl(220 14% 94%);
+  --muted-foreground: hsl(220 9% 46%);
   --popover: hsl(0 0% 100%);
-  --popover-foreground: hsl(240 10% 4%);
+  --popover-foreground: hsl(224 71% 4%);
   --card: hsl(0 0% 100%);
-  --card-foreground: hsl(240 10% 4%);
-  --border: hsl(240 6% 90%);
-  --input: hsl(240 6% 90%);
-  --primary: hsl(240 6% 10%);
-  --primary-foreground: hsl(0 0% 98%);
-  --secondary: hsl(240 5% 96%);
-  --secondary-foreground: hsl(240 6% 10%);
-  --accent: hsl(240 5% 96%);
-  --accent-foreground: hsl(240 6% 10%);
-  --destructive: hsl(0 72% 51%);
+  --card-foreground: hsl(224 71% 4%);
+  --border: hsl(220 13% 88%);
+  --input: hsl(220 13% 88%);
+  --primary: hsl(239 84% 67%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(220 14% 92%);
+  --secondary-foreground: hsl(224 71% 10%);
+  --accent: hsl(239 84% 96%);
+  --accent-foreground: hsl(239 84% 50%);
+  --destructive: hsl(0 84% 60%);
   --destructive-foreground: hsl(0 0% 98%);
-  --ring: hsl(240 6% 10%);
-  --radius: 0.5rem;
+  --ring: hsl(239 84% 67%);
+  --radius: 0.625rem;
 
   /* Sidebar tokens */
-  --sidebar-bg: hsl(240 6% 98%);
-  --sidebar-foreground: hsl(240 6% 20%);
-  --sidebar-border: hsl(240 6% 90%);
-  --sidebar-accent: hsl(240 5% 92%);
-  --sidebar-accent-foreground: hsl(240 6% 10%);
-  --sidebar-ring: hsl(240 6% 60%);
-  --sidebar-width: 240px;
-  --sidebar-collapsed-width: 64px;
+  --sidebar-bg: hsl(220 20% 96%);
+  --sidebar-foreground: hsl(224 20% 24%);
+  --sidebar-border: hsl(220 13% 88%);
+  --sidebar-accent: hsl(239 84% 95%);
+  --sidebar-accent-foreground: hsl(239 84% 50%);
+  --sidebar-ring: hsl(239 84% 67%);
+  --sidebar-width: 250px;
+  --sidebar-collapsed-width: 68px;
 
   /* Header tokens */
-  --header-height: 56px;
-  --header-bg: hsl(0 0% 100%);
-  --header-border: hsl(240 6% 90%);
+  --header-height: 60px;
+  --header-bg: hsla(220, 20%, 98%, 0.85);
+  --header-border: hsl(220 13% 88%);
 
   /* Transition */
-  --sidebar-transition: width 200ms cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 150ms ease;
+  --sidebar-transition: width 220ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 180ms ease;
 }
 
 /* ─────────────────────────────────────────────
-   Design Tokens — Dark Mode
+   Design Tokens — Dark Mode (Ultra Premium Slate-Indigo)
    ───────────────────────────────────────────── */
 .dark {
-  --background: hsl(240 10% 4%);
-  --foreground: hsl(0 0% 98%);
-  --muted: hsl(240 4% 16%);
-  --muted-foreground: hsl(240 5% 65%);
-  --popover: hsl(240 10% 4%);
-  --popover-foreground: hsl(0 0% 98%);
-  --card: hsl(240 10% 4%);
-  --card-foreground: hsl(0 0% 98%);
-  --border: hsl(240 4% 16%);
-  --input: hsl(240 4% 16%);
-  --primary: hsl(0 0% 98%);
-  --primary-foreground: hsl(240 6% 10%);
-  --secondary: hsl(240 4% 16%);
-  --secondary-foreground: hsl(0 0% 98%);
-  --accent: hsl(240 4% 16%);
-  --accent-foreground: hsl(0 0% 98%);
-  --destructive: hsl(0 63% 31%);
+  --background: hsl(228 20% 6%);
+  --foreground: hsl(210 40% 98%);
+  --muted: hsl(228 15% 12%);
+  --muted-foreground: hsl(215 20% 65%);
+  --popover: hsl(228 18% 9%);
+  --popover-foreground: hsl(210 40% 98%);
+  --card: hsl(228 18% 8%);
+  --card-foreground: hsl(210 40% 98%);
+  --border: hsl(228 14% 15%);
+  --input: hsl(228 14% 15%);
+  --primary: hsl(239 84% 67%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(228 15% 14%);
+  --secondary-foreground: hsl(210 40% 98%);
+  --accent: hsl(239 84% 67% / 0.15);
+  --accent-foreground: hsl(239 84% 75%);
+  --destructive: hsl(0 75% 45%);
   --destructive-foreground: hsl(0 0% 98%);
-  --ring: hsl(240 5% 84%);
+  --ring: hsl(239 84% 67%);
 
   /* Sidebar — dark */
-  --sidebar-bg: hsl(240 8% 7%);
-  --sidebar-foreground: hsl(240 5% 80%);
-  --sidebar-border: hsl(240 4% 14%);
-  --sidebar-accent: hsl(240 4% 14%);
-  --sidebar-accent-foreground: hsl(0 0% 98%);
-  --sidebar-ring: hsl(240 5% 40%);
+  --sidebar-bg: hsl(228 22% 7%);
+  --sidebar-foreground: hsl(215 20% 75%);
+  --sidebar-border: hsl(228 14% 13%);
+  --sidebar-accent: hsl(239 84% 67% / 0.12);
+  --sidebar-accent-foreground: hsl(239 84% 78%);
+  --sidebar-ring: hsl(239 84% 67%);
 
   /* Header — dark */
-  --header-bg: hsl(240 10% 4%);
-  --header-border: hsl(240 4% 14%);
+  --header-bg: hsla(228, 22%, 7%, 0.85);
+  --header-border: hsl(228 14% 13%);
 }
 
 /* ─────────────────────────────────────────────
@@ -112,32 +112,67 @@
   --color-sidebar-accent: var(--sidebar-accent);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --font-sans: var(--font-inter);
-  --font-mono: ui-monospace, monospace;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 /* ─────────────────────────────────────────────
-   Base styles
+   Base styles & Typography
    ───────────────────────────────────────────── */
 *,
 *::before,
 *::after {
   border-color: var(--border);
+  box-sizing: border-box;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter, ui-sans-serif, system-ui, sans-serif);
+  font-family: var(--font-inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
 }
 
 /* ─────────────────────────────────────────────
-   Dashboard shell layout utilities
+   Glassmorphic & Card Utilities
+   ───────────────────────────────────────────── */
+.glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(99, 102, 241, 0.02) 100%);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.03);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 14px 35px -5px rgba(99, 102, 241, 0.12), 0 0 0 1px rgba(99, 102, 241, 0.2);
+  transform: translateY(-2px);
+}
+
+.glow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 9999px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ─────────────────────────────────────────────
+   Dashboard Shell Layout
    ───────────────────────────────────────────── */
 .sidebar-shell {
   display: flex;
   min-height: 100vh;
+  background: var(--background);
 }
 
 .sidebar {
@@ -151,6 +186,7 @@ body {
   transition: var(--sidebar-transition);
   z-index: 40;
   overflow: hidden;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar.collapsed {
@@ -159,11 +195,12 @@ body {
 
 .sidebar-content-area {
   margin-left: var(--sidebar-width);
-  transition: margin-left 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: margin-left 220ms cubic-bezier(0.4, 0, 0.2, 1);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   flex: 1;
+  background: var(--background);
 }
 
 .sidebar-content-area.collapsed {
@@ -175,16 +212,39 @@ body {
   top: 0;
   height: var(--header-height);
   background: var(--header-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--header-border);
   z-index: 30;
   display: flex;
   align-items: center;
-  padding: 0 1rem;
-  gap: 0.75rem;
+  padding: 0 1.5rem;
+  gap: 1rem;
 }
 
 .dashboard-main {
   flex: 1;
-  padding: 1.5rem;
+  padding: 2rem 2.25rem;
   overflow-y: auto;
+}
+
+/* ─────────────────────────────────────────────
+   Custom Scrollbar
+   ───────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
 }

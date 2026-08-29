@@ -1,47 +1,62 @@
 "use client";
 
 import * as React from "react";
-import { FileText, Send, BarChart3 } from "lucide-react";
-
+import { FileText, Send, BarChart3, Sparkles } from "lucide-react";
 import { MetricCard } from "@/features/dashboard/components/metric-card";
+import { useGetContentsQuery } from "@/features/content/api/content-api";
+import { useGetAnalyticsSummaryQuery } from "@/features/content/api/analyticsApi";
+import { useListOpportunitiesQuery } from "@/features/strategy/api/strategyApi";
 
-/**
- * Stats summary row for the dashboard home page.
- *
- * Displays three top-level metrics:
- * - Pipeline status overview (content in progress)
- * - Scheduled content count
- * - Published content count
- *
- * NOTE: Data is placeholder for Phase 02. Real RTK Query content endpoints
- * are wired in Phase 03 when the content module is implemented.
- */
 export function StatsRow() {
+  const { data: contentsData, isLoading: isLoadingContents } = useGetContentsQuery({ limit: 100 });
+  const { data: analyticsSummary, isLoading: isLoadingAnalytics } = useGetAnalyticsSummaryQuery();
+  const { data: opportunities = [] } = useListOpportunitiesQuery();
+
+  const allItems = contentsData?.data || [];
+  const inPipelineCount = allItems.filter(
+    (c) => c.status !== "published" && c.status !== "failed" && c.status !== "archived",
+  ).length;
+  const scheduledCount = allItems.filter((c) => c.status === "scheduled").length;
+  const publishedCount = analyticsSummary?.publishedContentCount ?? allItems.filter((c) => c.status === "published").length;
+  const viralOppCount = opportunities.filter((o) => o.status === "suggested").length;
+
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
       <MetricCard
         id="metric-pipeline-status"
         label="In Pipeline"
-        value="—"
-        description="Content items currently being processed"
+        value={isLoadingContents ? "..." : inPipelineCount.toString()}
+        description="Active production lifecycle items"
         icon={FileText}
-        trend={{ direction: "neutral", label: "Connect content API in Phase 03" }}
+        color="#6366f1"
+        trend={{ direction: "up", label: "Active" }}
+      />
+      <MetricCard
+        id="metric-viral-opportunities"
+        label="AI Opportunities"
+        value={viralOppCount.toString()}
+        description="High-yield viral topic candidates"
+        icon={Sparkles}
+        color="#a855f7"
+        trend={{ direction: "up", label: "AI Discovered" }}
       />
       <MetricCard
         id="metric-scheduled-count"
         label="Scheduled"
-        value="—"
-        description="Upcoming publications across platforms"
+        value={isLoadingContents ? "..." : scheduledCount.toString()}
+        description="Queued multi-platform uploads"
         icon={Send}
-        trend={{ direction: "neutral", label: "Connect scheduling API in Phase 08" }}
+        color="#f59e0b"
+        trend={{ direction: "neutral", label: "Automated" }}
       />
       <MetricCard
         id="metric-published-count"
-        label="Published"
-        value="—"
-        description="Total published content items"
+        label="Published & Live"
+        value={isLoadingAnalytics ? "..." : publishedCount.toString()}
+        description="Distributed across YouTube & Meta"
         icon={BarChart3}
-        trend={{ direction: "neutral", label: "Connect analytics API in Phase 11" }}
+        color="#10b981"
+        trend={{ direction: "up", label: "Telemetry Ready" }}
       />
     </div>
   );
