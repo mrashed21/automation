@@ -7,8 +7,10 @@ export * from "./ai-job.types";
 export * from "./ai-provider.types";
 export * from "./research.types";
 export * from "./script.types";
+export * from "./media.types";
 export * from "./analytics.types";
 export * from "./workspace.types";
 export * from "./auth.types";
 export * from "./common.types";
+
 

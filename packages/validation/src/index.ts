@@ -6,6 +6,8 @@ export * from "./workspace.schema";
 export * from "./content.schema";
 export * from "./research.schema";
 export * from "./script.schema";
+export * from "./media.schema";
 export * from "./schedule.schema";
 export * from "./platform.schema";
+
 

@@ -1,6 +1,27 @@
 # Changelog
 
+## [0.5.0] - 2026-08-29
+
+### Added - Phase 06: Media Assets Management, Object Storage, Voice Generation & Thumbnail Studio
+
+- **Object Storage & Media Asset Service**:
+  - `StorageService` providing S3/MinIO compatible object storage with presigned upload/download URLs, SHA256 integrity checksums, and local persistent filesystem fallback.
+  - Mongoose schemas: `MediaAsset` (MIME types, dimensions, durations, license tracking, checksums), `ThumbnailAsset` (variants A/B/C/D, CTR scoring), `VoiceAsset` (ElevenLabs voice metadata, audio format).
+  - `MediaAssetsService` and `MediaAssetsController` endpoints for presigned URLs, direct multipart uploads, workspace media library querying, and asset deletion.
+- **AI Voice Narration Engine**:
+  - Neural voice generation integration utilizing ElevenLabs models (Rachel, Domi, Bella, Antoni, Josh).
+  - Real-time audio player, waveform visualizer, voice stability/similarity sliders, and custom script override support.
+- **High-CTR Thumbnail Studio**:
+  - AI Thumbnail variant generator producing 3-4 distinct visual concepts (YouTube High-CTR, Modern Vibrant, Cinematic Dramatic, Minimal Sleek).
+  - Headline typography overlays, CTR score estimation badges, and one-click primary thumbnail selection.
+- **Testing & Verification**:
+  - Full unit test suites for `StorageService` and `MediaAssetsService` (27 passing API tests, 31 total repo-wide).
+  - Zero-error monorepo type-check, lint, and production bundle build.
+
+---
+
 ## [0.4.0] - 2026-08-29
+
 
 ### Added - Phase 04 & 05: AI Providers, Autonomous Research & Script Studio
 

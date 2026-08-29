@@ -51,15 +51,19 @@ export interface AiVoiceOptions {
   speed?: number;
   pitch?: number;
   format?: "mp3" | "wav";
+  stability?: number;
+  similarityBoost?: number;
 }
 
 export interface AiVoiceResponse {
   audioUrl: string;
+  audioBuffer?: Buffer;
   durationSeconds: number;
   model: string;
   provider: string;
   usage: AiUsageMetrics;
 }
+
 
 export interface AiTextProvider {
   readonly name: string;

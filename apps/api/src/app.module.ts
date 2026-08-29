@@ -11,6 +11,8 @@ import { ContentModule } from "./modules/content/content.module";
 import { AiModule } from "./modules/ai/ai.module";
 import { ResearchModule } from "./modules/research/research.module";
 import { ScriptModule } from "./modules/script/script.module";
+import { StorageModule } from "./modules/storage/storage.module";
+import { MediaAssetsModule } from "./modules/media-assets/media-assets.module";
 
 @Module({
   imports: [
@@ -53,8 +55,9 @@ import { ScriptModule } from "./modules/script/script.module";
       inject: [ConfigService],
     }),
 
-    // Global AI Provider Abstraction
+    // Global AI Provider Abstraction & Storage
     AiModule,
+    StorageModule,
 
     // Feature modules
     HealthModule,
@@ -64,6 +67,8 @@ import { ScriptModule } from "./modules/script/script.module";
     ContentModule,
     ResearchModule,
     ScriptModule,
+    MediaAssetsModule,
   ],
 })
 export class AppModule {}
+

@@ -27,6 +27,8 @@ import { Separator } from "@/components/ui/separator";
 import { ContentStatusBadge } from "./content-status-badge";
 import { ResearchTabView } from "./research-tab-view";
 import { ScriptTabView } from "./script-tab-view";
+import { MediaTabView } from "./media-tab-view";
+import { ThumbnailTabView } from "./thumbnail-tab-view";
 import {
   useUpdateContentMutation,
   useGetContentVersionsQuery,
@@ -275,45 +277,14 @@ export function ContentDetailsTabs({ content }: ContentDetailsTabsProps) {
 
       {/* 4. MEDIA & VIDEO TAB */}
       <TabsContent value="media" className="space-y-4">
-        <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6 space-y-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <h3 className="text-base font-semibold text-[var(--foreground)]">Video Asset & Render Output</h3>
-              <p className="text-xs text-[var(--muted-foreground)]">
-                Audio narration, background music, video cuts, and rendered MP4 files.
-              </p>
-            </div>
-            <Badge variant="secondary">Phase 06/07 Feature</Badge>
-          </div>
-          <div className="rounded-lg border border-dashed border-[var(--border)] p-8 text-center bg-[var(--muted)]/20">
-            <Video className="mx-auto h-8 w-8 text-[var(--muted-foreground)]/60" />
-            <p className="mt-2 text-sm text-[var(--muted-foreground)]">
-              FFmpeg Media Worker render pipeline will connect in Phase 06 & 07.
-            </p>
-          </div>
-        </div>
+        <MediaTabView content={content} />
       </TabsContent>
 
       {/* 5. THUMBNAIL TAB */}
       <TabsContent value="thumbnail" className="space-y-4">
-        <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6 space-y-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <h3 className="text-base font-semibold text-[var(--foreground)]">Thumbnail Previews</h3>
-              <p className="text-xs text-[var(--muted-foreground)]">
-                High-CTR thumbnail variants generated via AI Image providers.
-              </p>
-            </div>
-            <Badge variant="secondary">Phase 06 Feature</Badge>
-          </div>
-          <div className="rounded-lg border border-dashed border-[var(--border)] p-8 text-center bg-[var(--muted)]/20">
-            <ImageIcon className="mx-auto h-8 w-8 text-[var(--muted-foreground)]/60" />
-            <p className="mt-2 text-sm text-[var(--muted-foreground)]">
-              Thumbnail generator will preview and A/B test variations in Phase 06.
-            </p>
-          </div>
-        </div>
+        <ThumbnailTabView content={content} />
       </TabsContent>
+
 
       {/* 6. PUBLISHING TAB */}
       <TabsContent value="publishing" className="space-y-4">

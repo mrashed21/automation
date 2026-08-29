@@ -75,11 +75,18 @@ Phase 06 — Media Assets Management & Object Storage (Phases 00–05 Completed)
   - [x] NestJS `ScriptController` (`POST /api/v1/content/:id/script`, `GET /api/v1/content/:id/script`, `PATCH /api/v1/content/:id/script`, `GET /api/v1/content/:id/script/versions`)
   - [x] Frontend `scriptApi` RTK Query slice with automatic cache invalidation
   - [x] `ScriptTabView` studio workspace: tone selection, duration slider, section adder/reorderer/editor, spoken duration calculation, visual cue editor, and immutable revision diff timeline
-  - [x] Comprehensive unit tests for `ScriptService`
+  - [x] Phase 06: Media Assets Management, Object Storage, Voice Generation & Thumbnail Studio
+  - [x] S3/MinIO compatible `StorageService` provider with presigned upload/download URLs, SHA256 checksum calculation, and local persistent storage fallback
+  - [x] Mongoose schemas: `MediaAsset` (type, checksum, dimensions, duration, licensing), `ThumbnailAsset` (variants A/B/C/D, style, CTR estimation), `VoiceAsset` (ElevenLabs voice metadata, audio format)
+  - [x] NestJS `MediaAssetsService` & `MediaAssetsController` (`POST /api/v1/media-assets/presigned-url`, `POST /api/v1/media-assets/upload`, `GET /api/v1/media-assets`, `GET /api/v1/content/:id/media`, `POST /api/v1/content/:id/media/voice`, `POST /api/v1/content/:id/media/thumbnails`, `PATCH /api/v1/content/:id/media/thumbnails/:thumbId/select`)
+  - [x] Frontend `mediaApi` RTK Query slice with automatic cache synchronization
+  - [x] `MediaTabView` studio UI: ElevenLabs voice model selector, audio player, duration badges, and direct file uploader
+  - [x] `ThumbnailTabView` studio UI: A/B testing variant grid (A, B, C, D), high-CTR presets, headline text overlays, CTR score estimation badges, and primary variant selection
+  - [x] Full unit test suites for `StorageService` and `MediaAssetsService` (27 passing API tests, 31 passing repo-wide)
 
 ## In Progress
 
-- [ ] Phase 06: Media Assets Management & Object Storage
+- [ ] Phase 07: FFmpeg Media Worker Render Pipeline (Audio/Video Composition, Subtitles & Safe Areas)
 
 ## Current System Status
 
@@ -89,17 +96,21 @@ Frontend (`apps/web`):
 - Content Library ready (`/dashboard/content`, `/dashboard/content/[id]`)
 - Research & Facts Studio ready (`ResearchTabView` with depth picker and live verification)
 - Script Studio ready (`ScriptTabView` with section editor and immutable version history)
+- Media & Video Studio ready (`MediaTabView` with voice generator, audio player, and asset pool)
+- Thumbnail Studio ready (`ThumbnailTabView` with A/B variant generator and primary selection)
 
 Backend API (`apps/api`):
 - Auth & Multi-Tenant Workspaces ready (`/auth/*`, `/workspaces/*`, `/users/*`, `/health`)
 - Content Core ready (`/content`, `/content/:id`, `/content/:id/versions`)
 - AI Provider & Research ready (`/content/:id/research`, `/content/:id/research/facts/:factId`, `/content/:id/research/verify`)
 - Script Engine ready (`/content/:id/script`, `/content/:id/script/versions`)
+- Storage & Media Engine ready (`/media-assets/*`, `/content/:id/media/*`, `/uploads/*`)
 
 Database:
-- Mongoose schemas registered (`users`, `refresh-tokens`, `workspaces`, `workspace-members`, `content`, `content-versions`, `researches`, `research-sources`, `research-facts`, `scripts`, `script-versions`)
+- Mongoose schemas registered (`users`, `refresh-tokens`, `workspaces`, `workspace-members`, `content`, `content-versions`, `researches`, `research-sources`, `research-facts`, `scripts`, `script-versions`, `media-assets`, `thumbnail-assets`, `voice-assets`)
 - Connected to live MongoDB Atlas database
 
 ## Last Updated
 
 2026-08-29
+

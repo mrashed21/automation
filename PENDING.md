@@ -1,11 +1,8 @@
 # Pending Work
 
-## High Priority (Phase 06-07 — Media Assets & FFmpeg Worker)
+## High Priority (Phase 07 — FFmpeg Media Worker Render Pipeline)
 
-- [ ] Media asset management & object storage (MinIO/S3 upload and presigned URLs)
-- [ ] Voice generation pipeline (ElevenLabs/TTS)
-- [ ] Thumbnail generation & variant testing
-- [ ] Media worker FFmpeg render pipeline (audio/video composition)
+- [ ] Media worker FFmpeg render pipeline (audio/video composition, subtitles & safe areas)
 
 ## Medium Priority (Phase 08-09 — Social Publishing Adapters)
 
@@ -32,3 +29,5 @@ None.
 - [x] Phase 03: Content Core & Library (Mongoose schemas, ContentModule CRUD API with workspace isolation, immutable ContentVersion tracking, Content Library table/grid views, filters, creation dialog, 8-tab details inspector)
 - [x] Phase 04: AI Provider Abstraction & Autonomous Research Agent (`AiService`, `GeminiTextProvider`, retry pipeline, `ResearchModule` CRUD, authoritative sources synthesis, fact claim extraction, `ResearchTabView`)
 - [x] Phase 05: Script Generator & Versioning Engine (`ScriptModule` multi-section generator, duration & pacing calculation, immutable `ScriptVersion` history, manual studio editor, `ScriptTabView`)
+- [x] Phase 06: Media Assets Management, Object Storage, Voice Generation & Thumbnail Studio (`StorageService`, `MediaAssetsModule`, ElevenLabs voice synthesizer, A/B thumbnail generator, `MediaTabView`, `ThumbnailTabView`)
+

@@ -5,6 +5,8 @@ import { NestFactory } from "@nestjs/core";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import cookieParser from "cookie-parser";
 
+import express from "express";
+import path from "path";
 import { AppModule } from "./app.module";
 import { HttpExceptionFilter } from "./common/filters/http-exception.filter";
 
@@ -29,8 +31,12 @@ async function bootstrap(): Promise<void> {
     next();
   });
 
+  // Serve persistent local media uploads
+  app.use("/uploads", express.static(path.resolve(process.cwd(), "uploads")));
+
   // Cookie parser for secure HttpOnly refresh token cookies
   app.use(cookieParser());
+
 
   // Global prefix for all routes
   app.setGlobalPrefix("api/v1");
