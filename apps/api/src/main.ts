@@ -1,3 +1,4 @@
+import dns from "node:dns";
 import { ValidationPipe } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { NestFactory } from "@nestjs/core";
@@ -6,6 +7,9 @@ import cookieParser from "cookie-parser";
 
 import { AppModule } from "./app.module";
 import { HttpExceptionFilter } from "./common/filters/http-exception.filter";
+
+// Ensure Node.js uses standard reliable DNS resolvers for MongoDB Atlas SRV lookups on Windows
+dns.setServers(["8.8.8.8", "1.1.1.1"]);
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule, {

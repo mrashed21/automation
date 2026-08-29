@@ -1,4 +1,3 @@
-import { BullModule } from "@nestjs/bullmq";
 import { Module } from "@nestjs/common";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { MongooseModule } from "@nestjs/mongoose";
@@ -17,7 +16,7 @@ import { AuthModule } from "./modules/auth/auth.module";
       envFilePath: ".env",
     }),
 
-    // MongoDB connection
+    // MongoDB connection (MongoDB Atlas)
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
@@ -27,32 +26,12 @@ import { AuthModule } from "./modules/auth/auth.module";
           on: (event: string, callback: (error: unknown) => void) => void;
         }) => {
           connection.on("connected", () => {
-            console.log("MongoDB connected");
+            console.log("MongoDB connected successfully");
           });
           connection.on("error", (error: unknown) => {
             console.error("MongoDB connection error:", error);
           });
           return connection;
-        },
-      }),
-      inject: [ConfigService],
-    }),
-
-    // Redis / BullMQ configuration
-    BullModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        connection: {
-          url: configService.getOrThrow<string>("REDIS_URL"),
-        },
-        defaultJobOptions: {
-          attempts: 3,
-          backoff: {
-            type: "exponential",
-            delay: 5000,
-          },
-          removeOnComplete: 100,
-          removeOnFail: 500,
         },
       }),
       inject: [ConfigService],
