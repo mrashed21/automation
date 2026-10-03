@@ -5,6 +5,10 @@ import {
   AnalyticsSnapshotSchema,
 } from "../../database/schemas/analytics-snapshot.schema";
 import {
+  Content,
+  ContentSchema,
+} from "../../database/schemas/content.schema";
+import {
   Publication,
   PublicationSchema,
 } from "../../database/schemas/publication.schema";
@@ -13,15 +17,11 @@ import {
   SocialAccountSchema,
 } from "../../database/schemas/social-account.schema";
 import {
-  Content,
-  ContentSchema,
-} from "../../database/schemas/content.schema";
-import {
   WorkspaceMember,
   WorkspaceMemberSchema,
 } from "../../database/schemas/workspace-member.schema";
-import { AnalyticsService } from "./analytics.service";
 import { AnalyticsController } from "./analytics.controller";
+import { AnalyticsService } from "./analytics.service";
 
 @Module({
   imports: [

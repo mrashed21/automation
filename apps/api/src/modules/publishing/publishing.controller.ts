@@ -1,22 +1,22 @@
 import {
-  Controller,
-  Get,
-  Post,
-  Delete,
   Body,
+  Controller,
+  Delete,
+  Get,
   Param,
+  Post,
   UseGuards,
 } from "@nestjs/common";
-import { ApiTags, ApiOperation, ApiBearerAuth } from "@nestjs/swagger";
-import { JwtAuthGuard } from "../../common/guards/jwt-auth.guard";
-import { WorkspaceGuard } from "../../common/guards/workspace.guard";
-import { CurrentUser } from "../../common/decorators/current-user.decorator";
-import { CurrentWorkspace } from "../../common/decorators/current-workspace.decorator";
-import { PublishingService } from "./publishing.service";
+import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
 import {
   connectSocialAccountSchema,
   createPublicationSchema,
 } from "@repo/validation";
+import { CurrentUser } from "../../common/decorators/current-user.decorator";
+import { CurrentWorkspace } from "../../common/decorators/current-workspace.decorator";
+import { JwtAuthGuard } from "../../common/guards/jwt-auth.guard";
+import { WorkspaceGuard } from "../../common/guards/workspace.guard";
+import { PublishingService } from "./publishing.service";
 
 @ApiTags("Publishing")
 @ApiBearerAuth()

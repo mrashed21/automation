@@ -11,15 +11,15 @@ import {
   UseGuards,
 } from "@nestjs/common";
 import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
+import type { AuthenticatedUser, AuthResponseDto } from "@repo/types";
+import type { LoginInput, RegisterInput } from "@repo/validation";
 import type { Request, Response } from "express";
-import { AuthService } from "./auth.service";
+import { CurrentUser } from "../../common/decorators/current-user.decorator";
+import { Public } from "../../common/decorators/public.decorator";
+import { JwtAuthGuard } from "../../common/guards/jwt-auth.guard";
 import { UsersService } from "../users/users.service";
 import { WorkspacesService } from "../workspaces/workspaces.service";
-import { JwtAuthGuard } from "../../common/guards/jwt-auth.guard";
-import { Public } from "../../common/decorators/public.decorator";
-import { CurrentUser } from "../../common/decorators/current-user.decorator";
-import type { LoginInput, RegisterInput } from "@repo/validation";
-import type { AuthenticatedUser, AuthResponseDto } from "@repo/types";
+import { AuthService } from "./auth.service";
 
 const REFRESH_COOKIE_NAME = "acp_refresh_token";
 

@@ -1,10 +1,10 @@
-import { Test, TestingModule } from "@nestjs/testing";
-import { getModelToken } from "@nestjs/mongoose";
 import { ConfigService } from "@nestjs/config";
+import { getModelToken } from "@nestjs/mongoose";
+import { Test, TestingModule } from "@nestjs/testing";
 import { Types } from "mongoose";
-import { AutomationService } from "./automation.service";
 import { AutomationRule } from "../../database/schemas/automation-rule.schema";
 import { AutomationRun } from "../../database/schemas/automation-run.schema";
+import { AutomationService } from "./automation.service";
 
 const mockWsId = new Types.ObjectId().toString();
 const mockUserId = new Types.ObjectId().toString();

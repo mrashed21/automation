@@ -1,14 +1,14 @@
-import { Test, TestingModule } from "@nestjs/testing";
 import { getModelToken } from "@nestjs/mongoose";
+import { Test, TestingModule } from "@nestjs/testing";
 import { Types } from "mongoose";
-import { MediaAssetsService } from "./media-assets.service";
+import { Content } from "../../database/schemas/content.schema";
 import { MediaAsset } from "../../database/schemas/media-asset.schema";
+import { Script } from "../../database/schemas/script.schema";
 import { ThumbnailAsset } from "../../database/schemas/thumbnail-asset.schema";
 import { VoiceAsset } from "../../database/schemas/voice-asset.schema";
-import { Content } from "../../database/schemas/content.schema";
-import { Script } from "../../database/schemas/script.schema";
-import { StorageService } from "../storage/storage.service";
 import { AiService } from "../ai/ai.service";
+import { StorageService } from "../storage/storage.service";
+import { MediaAssetsService } from "./media-assets.service";
 
 describe("MediaAssetsService", () => {
   let service: MediaAssetsService;

@@ -1,9 +1,9 @@
 import { Test, TestingModule } from "@nestjs/testing";
+import { z } from "zod";
 import { AiService } from "./ai.service";
 import { GeminiTextProvider } from "./providers/gemini-text.provider";
 import { MockImageProvider } from "./providers/mock-image.provider";
 import { MockVoiceProvider } from "./providers/mock-voice.provider";
-import { z } from "zod";
 
 describe("AiService", () => {
   let service: AiService;

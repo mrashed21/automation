@@ -1,14 +1,14 @@
 import {
   Controller,
   Get,
-  Post,
   Param,
+  Post,
   UseGuards,
 } from "@nestjs/common";
-import { ApiTags, ApiOperation, ApiBearerAuth } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
+import { CurrentWorkspace } from "../../common/decorators/current-workspace.decorator";
 import { JwtAuthGuard } from "../../common/guards/jwt-auth.guard";
 import { WorkspaceGuard } from "../../common/guards/workspace.guard";
-import { CurrentWorkspace } from "../../common/decorators/current-workspace.decorator";
 import { AnalyticsService } from "./analytics.service";
 
 @ApiTags("Analytics")

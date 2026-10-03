@@ -1,7 +1,7 @@
 import { Injectable, Logger } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
-import type { IAiTextProvider } from "../interfaces/ai-provider.interface";
 import type { AiPromptOptions, AiTextResponse } from "@repo/types";
+import type { IAiTextProvider } from "../interfaces/ai-provider.interface";
 
 @Injectable()
 export class GeminiTextProvider implements IAiTextProvider {
@@ -12,58 +12,75 @@ export class GeminiTextProvider implements IAiTextProvider {
 
   constructor(private readonly configService: ConfigService) {
     this.apiKey = this.configService.get<string>("GEMINI_API_KEY") || this.configService.get<string>("AI_API_KEY");
-    this.defaultModel = this.configService.get<string>("GEMINI_MODEL", "gemini-1.5-pro");
+    this.defaultModel = this.configService.get<string>("GEMINI_MODEL", "gemini-3.5-flash");
+  }
+
+  private resolveModel(modelName?: string): string {
+    if (!modelName || modelName.includes("1.5-") || modelName === "gemini-2.5-flash") {
+      return this.defaultModel;
+    }
+    return modelName;
   }
 
   async generateText(prompt: string, options?: AiPromptOptions): Promise<AiTextResponse<string>> {
     const startTime = Date.now();
-    const model = options?.model || this.defaultModel;
+    const primaryModel = this.resolveModel(options?.model);
+    const candidateModels = [primaryModel];
+    if (primaryModel !== "gemini-3.5-flash") {
+      candidateModels.push("gemini-3.5-flash");
+    }
 
     // If API key is provided, attempt live LLM call
     if (this.apiKey) {
-      try {
-        const response = await fetch(
-          `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${this.apiKey}`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              contents: [{ parts: [{ text: `${options?.systemPrompt ? options.systemPrompt + "\n\n" : ""}${prompt}` }] }],
-              generationConfig: {
-                temperature: options?.temperature ?? 0.7,
-                maxOutputTokens: options?.maxTokens ?? 2048,
-              },
-            }),
-          },
-        );
-
-        if (response.ok) {
-          const data = (await response.json()) as {
-            candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
-            usageMetadata?: { promptTokenCount?: number; candidatesTokenCount?: number; totalTokenCount?: number };
-          };
-
-          const text = data.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
-          const durationMs = Date.now() - startTime;
-          const promptTokens = data.usageMetadata?.promptTokenCount ?? Math.ceil(prompt.length / 4);
-          const completionTokens = data.usageMetadata?.candidatesTokenCount ?? Math.ceil(text.length / 4);
-
-          return {
-            content: text,
-            rawText: text,
-            model,
-            provider: this.name,
-            usage: {
-              promptTokens,
-              completionTokens,
-              totalTokens: promptTokens + completionTokens,
-              estimatedCostUsd: (promptTokens * 0.00000125) + (completionTokens * 0.000005),
-              durationMs,
+      for (const model of candidateModels) {
+        try {
+          const response = await fetch(
+            `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${this.apiKey}`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                contents: [{ parts: [{ text: `${options?.systemPrompt ? options.systemPrompt + "\n\n" : ""}${prompt}` }] }],
+                generationConfig: {
+                  temperature: options?.temperature ?? 0.7,
+                  maxOutputTokens: options?.maxTokens ?? 2048,
+                },
+              }),
             },
-          };
+          );
+
+          if (response.ok) {
+            const data = (await response.json()) as {
+              candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
+              usageMetadata?: { promptTokenCount?: number; candidatesTokenCount?: number; totalTokenCount?: number };
+            };
+
+            const text = data.candidates?.[0]?.content?.parts?.find((p) => typeof p.text === "string")?.text ??
+              data.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
+            const durationMs = Date.now() - startTime;
+            const promptTokens = data.usageMetadata?.promptTokenCount ?? Math.ceil(prompt.length / 4);
+            const completionTokens = data.usageMetadata?.candidatesTokenCount ?? Math.ceil(text.length / 4);
+
+            return {
+              content: text,
+              rawText: text,
+              model,
+              provider: this.name,
+              usage: {
+                promptTokens,
+                completionTokens,
+                totalTokens: promptTokens + completionTokens,
+                estimatedCostUsd: (promptTokens * 0.00000125) + (completionTokens * 0.000005),
+                durationMs,
+              },
+            };
+          } else {
+            const errorData = await response.text();
+            this.logger.warn(`Live Gemini API request failed (${model}): ${response.status} - ${errorData}`);
+          }
+        } catch (err) {
+          this.logger.warn(`Live Gemini API request failed for ${model}: ${(err as Error).message}`);
         }
-      } catch (err) {
-        this.logger.warn(`Live Gemini API request failed, falling back to heuristic engine: ${(err as Error).message}`);
       }
     }
 
@@ -76,7 +93,7 @@ export class GeminiTextProvider implements IAiTextProvider {
     return {
       content: simulatedText,
       rawText: simulatedText,
-      model,
+      model: primaryModel,
       provider: this.name,
       usage: {
         promptTokens,
@@ -94,57 +111,67 @@ export class GeminiTextProvider implements IAiTextProvider {
     options?: AiPromptOptions,
   ): Promise<AiTextResponse<T>> {
     const startTime = Date.now();
-    const model = options?.model || this.defaultModel;
+    const primaryModel = this.resolveModel(options?.model);
+    const candidateModels = [primaryModel];
+    if (primaryModel !== "gemini-3.5-flash") {
+      candidateModels.push("gemini-3.5-flash");
+    }
 
     const fullPrompt = `${prompt}\n\nYou must return only valid JSON adhering strictly to this schema specification:\n${schemaDescription}\n\nDo not wrap in markdown quotes or code blocks.`;
 
     if (this.apiKey) {
-      try {
-        const response = await fetch(
-          `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${this.apiKey}`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              contents: [{ parts: [{ text: `${options?.systemPrompt ? options.systemPrompt + "\n\n" : ""}${fullPrompt}` }] }],
-              generationConfig: {
-                temperature: options?.temperature ?? 0.3,
-                maxOutputTokens: options?.maxTokens ?? 3000,
-                responseMimeType: "application/json",
-              },
-            }),
-          },
-        );
-
-        if (response.ok) {
-          const data = (await response.json()) as {
-            candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
-            usageMetadata?: { promptTokenCount?: number; candidatesTokenCount?: number; totalTokenCount?: number };
-          };
-
-          const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text ?? "{}";
-          const cleanedText = rawText.replace(/```json\s*|```/g, "").trim();
-          const parsed = JSON.parse(cleanedText) as T;
-          const durationMs = Date.now() - startTime;
-          const promptTokens = data.usageMetadata?.promptTokenCount ?? Math.ceil(fullPrompt.length / 4);
-          const completionTokens = data.usageMetadata?.candidatesTokenCount ?? Math.ceil(rawText.length / 4);
-
-          return {
-            content: parsed,
-            rawText,
-            model,
-            provider: this.name,
-            usage: {
-              promptTokens,
-              completionTokens,
-              totalTokens: promptTokens + completionTokens,
-              estimatedCostUsd: (promptTokens * 0.00000125) + (completionTokens * 0.000005),
-              durationMs,
+      for (const model of candidateModels) {
+        try {
+          const response = await fetch(
+            `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${this.apiKey}`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                contents: [{ parts: [{ text: `${options?.systemPrompt ? options.systemPrompt + "\n\n" : ""}${fullPrompt}` }] }],
+                generationConfig: {
+                  temperature: options?.temperature ?? 0.3,
+                  maxOutputTokens: options?.maxTokens ?? 3000,
+                  responseMimeType: "application/json",
+                },
+              }),
             },
-          };
+          );
+
+          if (response.ok) {
+            const data = (await response.json()) as {
+              candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
+              usageMetadata?: { promptTokenCount?: number; candidatesTokenCount?: number; totalTokenCount?: number };
+            };
+
+            const rawText = data.candidates?.[0]?.content?.parts?.find((p) => typeof p.text === "string")?.text ??
+              data.candidates?.[0]?.content?.parts?.[0]?.text ?? "{}";
+            const cleanedText = rawText.replace(/```json\s*|```/g, "").trim();
+            const parsed = JSON.parse(cleanedText) as T;
+            const durationMs = Date.now() - startTime;
+            const promptTokens = data.usageMetadata?.promptTokenCount ?? Math.ceil(fullPrompt.length / 4);
+            const completionTokens = data.usageMetadata?.candidatesTokenCount ?? Math.ceil(rawText.length / 4);
+
+            return {
+              content: parsed,
+              rawText,
+              model,
+              provider: this.name,
+              usage: {
+                promptTokens,
+                completionTokens,
+                totalTokens: promptTokens + completionTokens,
+                estimatedCostUsd: (promptTokens * 0.00000125) + (completionTokens * 0.000005),
+                durationMs,
+              },
+            };
+          } else {
+            const errorData = await response.text();
+            this.logger.warn(`Live Gemini structured JSON request failed (${model}): ${response.status} - ${errorData}`);
+          }
+        } catch (err) {
+          this.logger.warn(`Live Gemini structured JSON request failed for ${model}: ${(err as Error).message}`);
         }
-      } catch (err) {
-        this.logger.warn(`Live Gemini structured JSON request failed, falling back to heuristic engine: ${(err as Error).message}`);
       }
     }
 
@@ -158,7 +185,7 @@ export class GeminiTextProvider implements IAiTextProvider {
     return {
       content: simulatedObj,
       rawText: rawJson,
-      model,
+      model: primaryModel,
       provider: this.name,
       usage: {
         promptTokens,

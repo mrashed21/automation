@@ -1,10 +1,10 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Document, Types } from "mongoose";
 import type {
-  PublishingPlatform,
   PublicationPrivacy,
+  PublishingPlatform,
   SocialPublishingStatus,
 } from "@repo/types";
+import { Document, Types } from "mongoose";
 
 export type PublicationDocument = Publication & Document;
 

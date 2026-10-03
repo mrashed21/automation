@@ -12,8 +12,8 @@ import {
   WorkspaceMember,
   WorkspaceMemberSchema,
 } from "../../database/schemas/workspace-member.schema";
-import { AutomationService } from "./automation.service";
 import { AutomationController } from "./automation.controller";
+import { AutomationService } from "./automation.service";
 
 @Module({
   imports: [

@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Document, Types } from "mongoose";
 import type { PublishingPlatform } from "@repo/types";
+import { Document, Types } from "mongoose";
 
 export type SocialAccountDocument = SocialAccount & Document;
 

@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Schema as MongooseSchema, Types } from "mongoose";
-import type { HydratedDocument } from "mongoose";
 import type { ScriptSectionType } from "@repo/types";
+import type { HydratedDocument } from "mongoose";
+import { Schema as MongooseSchema, Types } from "mongoose";
 
 export type ScriptDocument = HydratedDocument<Script>;
 

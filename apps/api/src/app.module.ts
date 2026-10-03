@@ -23,7 +23,7 @@ import { StrategyModule } from "./modules/strategy/strategy.module";
     // Environment configuration — loaded from .env
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: ".env",
+      envFilePath: [".env", "../../.env"],
     }),
 
     // MongoDB connection (MongoDB Atlas)

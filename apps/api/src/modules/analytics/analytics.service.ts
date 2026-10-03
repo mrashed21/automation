@@ -3,11 +3,16 @@ import {
   Logger,
 } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
+import type { AnalyticsSnapshotDto } from "@repo/types";
 import { Model, Types } from "mongoose";
 import {
   AnalyticsSnapshot,
   AnalyticsSnapshotDocument,
 } from "../../database/schemas/analytics-snapshot.schema";
+import {
+  Content,
+  ContentDocument,
+} from "../../database/schemas/content.schema";
 import {
   Publication,
   PublicationDocument,
@@ -16,11 +21,6 @@ import {
   SocialAccount,
   SocialAccountDocument,
 } from "../../database/schemas/social-account.schema";
-import {
-  Content,
-  ContentDocument,
-} from "../../database/schemas/content.schema";
-import type { AnalyticsSnapshotDto } from "@repo/types";
 
 @Injectable()
 export class AnalyticsService {

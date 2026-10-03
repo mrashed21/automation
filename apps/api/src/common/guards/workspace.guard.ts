@@ -6,12 +6,12 @@ import {
   NotFoundException,
 } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
+import type { AuthenticatedUser } from "@repo/types";
 import { Model, Types } from "mongoose";
 import {
   WorkspaceMember,
   WorkspaceMemberDocument,
 } from "../../database/schemas/workspace-member.schema";
-import type { AuthenticatedUser } from "@repo/types";
 
 @Injectable()
 export class WorkspaceGuard implements CanActivate {

@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
-import type { IAiVoiceProvider } from "../interfaces/ai-provider.interface";
 import type { AiVoiceOptions, AiVoiceResponse } from "@repo/types";
+import type { IAiVoiceProvider } from "../interfaces/ai-provider.interface";
 
 @Injectable()
 export class MockVoiceProvider implements IAiVoiceProvider {

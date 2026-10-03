@@ -1,22 +1,12 @@
 import {
-  Injectable,
-  NotFoundException,
   BadRequestException,
-  UnauthorizedException,
+  Injectable,
   Logger,
+  NotFoundException,
+  UnauthorizedException,
 } from "@nestjs/common";
-import { InjectModel } from "@nestjs/mongoose";
-import { Model, Types } from "mongoose";
-import * as crypto from "crypto";
 import { ConfigService } from "@nestjs/config";
-import {
-  AutomationRule,
-  AutomationRuleDocument,
-} from "../../database/schemas/automation-rule.schema";
-import {
-  AutomationRun,
-  AutomationRunDocument,
-} from "../../database/schemas/automation-run.schema";
+import { InjectModel } from "@nestjs/mongoose";
 import type {
   AutomationRuleDto,
   AutomationRunDto,
@@ -26,6 +16,16 @@ import type {
   CreateAutomationRuleDto,
   UpdateAutomationRuleDto,
 } from "@repo/validation";
+import * as crypto from "crypto";
+import { Model, Types } from "mongoose";
+import {
+  AutomationRule,
+  AutomationRuleDocument,
+} from "../../database/schemas/automation-rule.schema";
+import {
+  AutomationRun,
+  AutomationRunDocument,
+} from "../../database/schemas/automation-run.schema";
 
 @Injectable()
 export class AutomationService {

@@ -1,30 +1,30 @@
 import {
-  Injectable,
-  NotFoundException,
   BadRequestException,
+  Injectable,
   Logger,
+  NotFoundException,
 } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
+import type {
+  PublicationRecordDto,
+  SocialAccountDto,
+} from "@repo/types";
 import { Model, Types } from "mongoose";
-import {
-  SocialAccount,
-  SocialAccountDocument,
-} from "../../database/schemas/social-account.schema";
-import {
-  Publication,
-  PublicationDocument,
-} from "../../database/schemas/publication.schema";
 import { Content, ContentDocument } from "../../database/schemas/content.schema";
 import {
   MediaAsset,
   MediaAssetDocument,
 } from "../../database/schemas/media-asset.schema";
-import { YouTubePublisher } from "./adapters/youtube.publisher";
+import {
+  Publication,
+  PublicationDocument,
+} from "../../database/schemas/publication.schema";
+import {
+  SocialAccount,
+  SocialAccountDocument,
+} from "../../database/schemas/social-account.schema";
 import { FacebookPublisher } from "./adapters/facebook.publisher";
-import type {
-  SocialAccountDto,
-  PublicationRecordDto,
-} from "@repo/types";
+import { YouTubePublisher } from "./adapters/youtube.publisher";
 
 import type {
   ConnectSocialAccountInput,

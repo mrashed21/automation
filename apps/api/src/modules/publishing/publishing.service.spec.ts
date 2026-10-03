@@ -1,13 +1,13 @@
-import { Test, TestingModule } from "@nestjs/testing";
 import { getModelToken } from "@nestjs/mongoose";
+import { Test, TestingModule } from "@nestjs/testing";
 import { Types } from "mongoose";
-import { PublishingService } from "./publishing.service";
-import { SocialAccount } from "../../database/schemas/social-account.schema";
-import { Publication } from "../../database/schemas/publication.schema";
 import { Content } from "../../database/schemas/content.schema";
 import { MediaAsset } from "../../database/schemas/media-asset.schema";
-import { YouTubePublisher } from "./adapters/youtube.publisher";
+import { Publication } from "../../database/schemas/publication.schema";
+import { SocialAccount } from "../../database/schemas/social-account.schema";
 import { FacebookPublisher } from "./adapters/facebook.publisher";
+import { YouTubePublisher } from "./adapters/youtube.publisher";
+import { PublishingService } from "./publishing.service";
 
 describe("PublishingService", () => {
   let service: PublishingService;

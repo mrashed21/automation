@@ -1,34 +1,34 @@
 import {
-  Injectable,
-  NotFoundException,
   BadRequestException,
+  Injectable,
   Logger,
+  NotFoundException,
 } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
-import { Model, Types } from "mongoose";
-import { MediaAsset, MediaAssetDocument } from "../../database/schemas/media-asset.schema";
-import { ThumbnailAsset, ThumbnailAssetDocument } from "../../database/schemas/thumbnail-asset.schema";
-import { VoiceAsset, VoiceAssetDocument } from "../../database/schemas/voice-asset.schema";
-import { Content, ContentDocument } from "../../database/schemas/content.schema";
-import { Script, ScriptDocument } from "../../database/schemas/script.schema";
-import { StorageService } from "../storage/storage.service";
-import { AiService } from "../ai/ai.service";
 import type {
+  ContentMediaPackageDto,
   MediaAssetDto,
+  MediaSource,
+  MediaType,
+  PresignedUploadUrlDto,
+  RenderStatusDto,
   ThumbnailAssetDto,
   VoiceAssetDto,
-  ContentMediaPackageDto,
-  PresignedUploadUrlDto,
-  MediaType,
-  MediaSource,
-  RenderStatusDto,
 } from "@repo/types";
 import type {
   GeneratePresignedUrlInput,
-  GenerateVoiceNarrationInput,
   GenerateThumbnailVariantsInput,
+  GenerateVoiceNarrationInput,
   StartRenderJobInput,
 } from "@repo/validation";
+import { Model, Types } from "mongoose";
+import { Content, ContentDocument } from "../../database/schemas/content.schema";
+import { MediaAsset, MediaAssetDocument } from "../../database/schemas/media-asset.schema";
+import { Script, ScriptDocument } from "../../database/schemas/script.schema";
+import { ThumbnailAsset, ThumbnailAssetDocument } from "../../database/schemas/thumbnail-asset.schema";
+import { VoiceAsset, VoiceAssetDocument } from "../../database/schemas/voice-asset.schema";
+import { AiService } from "../ai/ai.service";
+import { StorageService } from "../storage/storage.service";
 
 
 @Injectable()

@@ -1,9 +1,9 @@
-import { ForbiddenException, NotFoundException } from "@nestjs/common";
 import type { ExecutionContext } from "@nestjs/common";
-import { Types } from "mongoose";
+import { ForbiddenException, NotFoundException } from "@nestjs/common";
 import type { Model } from "mongoose";
-import { WorkspaceGuard } from "./workspace.guard";
+import { Types } from "mongoose";
 import type { WorkspaceMemberDocument } from "../../database/schemas/workspace-member.schema";
+import { WorkspaceGuard } from "./workspace.guard";
 
 describe("WorkspaceGuard", () => {
   let guard: WorkspaceGuard;

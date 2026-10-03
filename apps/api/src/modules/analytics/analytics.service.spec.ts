@@ -1,11 +1,11 @@
-import { Test, TestingModule } from "@nestjs/testing";
 import { getModelToken } from "@nestjs/mongoose";
-import { AnalyticsService } from "./analytics.service";
+import { Test, TestingModule } from "@nestjs/testing";
+import { Types } from "mongoose";
 import { AnalyticsSnapshot } from "../../database/schemas/analytics-snapshot.schema";
+import { Content } from "../../database/schemas/content.schema";
 import { Publication } from "../../database/schemas/publication.schema";
 import { SocialAccount } from "../../database/schemas/social-account.schema";
-import { Content } from "../../database/schemas/content.schema";
-import { Types } from "mongoose";
+import { AnalyticsService } from "./analytics.service";
 
 const makeObjectId = () => new Types.ObjectId();
 

@@ -1,10 +1,10 @@
 import type {
-  AiTextResponse,
-  AiPromptOptions,
-  AiImageResponse,
   AiImageOptions,
-  AiVoiceResponse,
+  AiImageResponse,
+  AiPromptOptions,
+  AiTextResponse,
   AiVoiceOptions,
+  AiVoiceResponse,
 } from "@repo/types";
 
 export interface IAiTextProvider {

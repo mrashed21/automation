@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Schema as MongooseSchema, Types } from "mongoose";
 import type { HydratedDocument } from "mongoose";
+import { Schema as MongooseSchema, Types } from "mongoose";
 import { ScriptSection } from "./script.schema";
 
 export type ScriptVersionDocument = HydratedDocument<ScriptVersion>;

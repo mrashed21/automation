@@ -12,17 +12,6 @@ import {
   UseGuards,
 } from "@nestjs/common";
 import { ApiBearerAuth, ApiOperation, ApiQuery, ApiTags } from "@nestjs/swagger";
-import { ContentService } from "./content.service";
-import { JwtAuthGuard } from "../../common/guards/jwt-auth.guard";
-import { WorkspaceGuard } from "../../common/guards/workspace.guard";
-import { RolesGuard } from "../../common/guards/roles.guard";
-import { CurrentUser } from "../../common/decorators/current-user.decorator";
-import { CurrentWorkspace } from "../../common/decorators/current-workspace.decorator";
-import { Roles } from "../../common/decorators/roles.decorator";
-import type {
-  CreateContentInput,
-  UpdateContentInput,
-} from "@repo/validation";
 import type {
   ActiveWorkspaceContext,
   AuthenticatedUser,
@@ -30,6 +19,17 @@ import type {
   ContentVersionDto,
   PaginatedResponse,
 } from "@repo/types";
+import type {
+  CreateContentInput,
+  UpdateContentInput,
+} from "@repo/validation";
+import { CurrentUser } from "../../common/decorators/current-user.decorator";
+import { CurrentWorkspace } from "../../common/decorators/current-workspace.decorator";
+import { Roles } from "../../common/decorators/roles.decorator";
+import { JwtAuthGuard } from "../../common/guards/jwt-auth.guard";
+import { RolesGuard } from "../../common/guards/roles.guard";
+import { WorkspaceGuard } from "../../common/guards/workspace.guard";
+import { ContentService } from "./content.service";
 
 @ApiTags("Content")
 @Controller("content")

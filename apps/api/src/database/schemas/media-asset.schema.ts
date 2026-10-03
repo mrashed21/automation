@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Document, Types, Schema as MongooseSchema } from "mongoose";
-import type { MediaType, MediaSource } from "@repo/types";
+import type { MediaSource, MediaType } from "@repo/types";
+import { Document, Schema as MongooseSchema, Types } from "mongoose";
 
 export type MediaAssetDocument = MediaAsset & Document;
 

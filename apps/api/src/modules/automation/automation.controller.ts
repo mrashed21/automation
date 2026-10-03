@@ -1,29 +1,29 @@
 import {
-  Controller,
-  Get,
-  Post,
-  Patch,
-  Delete,
   Body,
-  Param,
-  Query,
-  UseGuards,
+  Controller,
+  Delete,
+  Get,
   Headers,
+  Param,
+  Patch,
+  Post,
+  Query,
   Req,
+  UseGuards,
 } from "@nestjs/common";
-import { ApiTags, ApiOperation, ApiBearerAuth } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
+import {
+  createAutomationRuleSchema,
+  toggleAutomationRuleSchema,
+  updateAutomationRuleSchema,
+} from "@repo/validation";
 import type { Request } from "express";
-import { JwtAuthGuard } from "../../common/guards/jwt-auth.guard";
-import { WorkspaceGuard } from "../../common/guards/workspace.guard";
 import { CurrentUser } from "../../common/decorators/current-user.decorator";
 import { CurrentWorkspace } from "../../common/decorators/current-workspace.decorator";
 import { Public } from "../../common/decorators/public.decorator";
+import { JwtAuthGuard } from "../../common/guards/jwt-auth.guard";
+import { WorkspaceGuard } from "../../common/guards/workspace.guard";
 import { AutomationService } from "./automation.service";
-import {
-  createAutomationRuleSchema,
-  updateAutomationRuleSchema,
-  toggleAutomationRuleSchema,
-} from "@repo/validation";
 
 @ApiTags("Automation")
 @Controller()

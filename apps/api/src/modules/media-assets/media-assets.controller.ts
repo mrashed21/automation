@@ -1,32 +1,32 @@
 import {
-  Controller,
-  Get,
-  Post,
-  Patch,
-  Delete,
+  BadRequestException,
   Body,
+  Controller,
+  Delete,
+  Get,
   Param,
+  Patch,
+  Post,
   Query,
+  UploadedFile,
   UseGuards,
   UseInterceptors,
-  UploadedFile,
-  BadRequestException,
 } from "@nestjs/common";
 import { FileInterceptor } from "@nestjs/platform-express";
-import { ApiTags, ApiOperation, ApiBearerAuth, ApiConsumes } from "@nestjs/swagger";
-import { JwtAuthGuard } from "../../common/guards/jwt-auth.guard";
-import { WorkspaceGuard } from "../../common/guards/workspace.guard";
-import { CurrentUser } from "../../common/decorators/current-user.decorator";
-import { CurrentWorkspace } from "../../common/decorators/current-workspace.decorator";
-import { MediaAssetsService } from "./media-assets.service";
-import type { MediaType, MediaSource } from "@repo/types";
+import { ApiBearerAuth, ApiConsumes, ApiOperation, ApiTags } from "@nestjs/swagger";
+import type { MediaSource, MediaType } from "@repo/types";
 import {
   generatePresignedUrlSchema,
-  generateVoiceNarrationSchema,
   generateThumbnailVariantsSchema,
+  generateVoiceNarrationSchema,
   selectPrimaryThumbnailSchema,
   startRenderJobSchema,
 } from "@repo/validation";
+import { CurrentUser } from "../../common/decorators/current-user.decorator";
+import { CurrentWorkspace } from "../../common/decorators/current-workspace.decorator";
+import { JwtAuthGuard } from "../../common/guards/jwt-auth.guard";
+import { WorkspaceGuard } from "../../common/guards/workspace.guard";
+import { MediaAssetsService } from "./media-assets.service";
 
 
 @ApiTags("Media Assets")

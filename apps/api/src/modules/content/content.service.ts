@@ -4,15 +4,6 @@ import {
   NotFoundException,
 } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
-import { Model, Types } from "mongoose";
-import {
-  Content,
-  ContentDocument,
-} from "../../database/schemas/content.schema";
-import {
-  ContentVersion,
-  ContentVersionDocument,
-} from "../../database/schemas/content-version.schema";
 import type {
   ContentDto,
   ContentVersionDto,
@@ -22,6 +13,15 @@ import type {
   CreateContentInput,
   UpdateContentInput,
 } from "@repo/validation";
+import { Model, Types } from "mongoose";
+import {
+  ContentVersion,
+  ContentVersionDocument,
+} from "../../database/schemas/content-version.schema";
+import {
+  Content,
+  ContentDocument,
+} from "../../database/schemas/content.schema";
 
 export interface FindContentQuery {
   page?: number;

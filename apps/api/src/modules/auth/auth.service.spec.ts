@@ -1,15 +1,15 @@
-import { Test, TestingModule } from "@nestjs/testing";
-import { JwtService } from "@nestjs/jwt";
 import { ConfigService } from "@nestjs/config";
+import { JwtService } from "@nestjs/jwt";
 import { getModelToken } from "@nestjs/mongoose";
-import { Types } from "mongoose";
+import { Test, TestingModule } from "@nestjs/testing";
 import type { Model } from "mongoose";
-import { AuthService } from "./auth.service";
-import { UsersService } from "../users/users.service";
-import { WorkspacesService } from "../workspaces/workspaces.service";
+import { Types } from "mongoose";
 import { RefreshToken, RefreshTokenDocument } from "../../database/schemas/refresh-token.schema";
 import type { UserDocument } from "../../database/schemas/user.schema";
 import type { WorkspaceDocument } from "../../database/schemas/workspace.schema";
+import { UsersService } from "../users/users.service";
+import { WorkspacesService } from "../workspaces/workspaces.service";
+import { AuthService } from "./auth.service";
 
 describe("AuthService", () => {
   let service: AuthService;

@@ -1,4 +1,4 @@
-import { Module, Global } from "@nestjs/common";
+import { Global, Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { AiService } from "./ai.service";
 import { GeminiTextProvider } from "./providers/gemini-text.provider";

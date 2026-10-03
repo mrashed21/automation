@@ -1,10 +1,10 @@
 import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
-import { Content, ContentSchema } from "../../database/schemas/content.schema";
 import {
   ContentVersion,
   ContentVersionSchema,
 } from "../../database/schemas/content-version.schema";
+import { Content, ContentSchema } from "../../database/schemas/content.schema";
 import {
   WorkspaceMember,
   WorkspaceMemberSchema,

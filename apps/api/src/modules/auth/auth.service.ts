@@ -2,12 +2,14 @@ import {
   Injectable,
   UnauthorizedException,
 } from "@nestjs/common";
-import { JwtService } from "@nestjs/jwt";
 import { ConfigService } from "@nestjs/config";
+import { JwtService } from "@nestjs/jwt";
 import { InjectModel } from "@nestjs/mongoose";
-import { Model, Types } from "mongoose";
+import type { AuthResponseDto, JwtPayload } from "@repo/types";
+import type { RegisterInput } from "@repo/validation";
 import * as bcrypt from "bcryptjs";
 import * as crypto from "crypto";
+import { Model, Types } from "mongoose";
 import {
   RefreshToken,
   RefreshTokenDocument,
@@ -15,8 +17,6 @@ import {
 import { UserDocument } from "../../database/schemas/user.schema";
 import { UsersService } from "../users/users.service";
 import { WorkspacesService } from "../workspaces/workspaces.service";
-import type { RegisterInput } from "@repo/validation";
-import type { AuthResponseDto, JwtPayload } from "@repo/types";
 
 @Injectable()
 export class AuthService {

@@ -1,7 +1,7 @@
 import { CanActivate, ExecutionContext, ForbiddenException, Injectable } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
-import { ROLES_KEY } from "../decorators/roles.decorator";
 import type { WorkspaceMemberRole } from "@repo/types";
+import { ROLES_KEY } from "../decorators/roles.decorator";
 
 const ROLE_HIERARCHY: Record<WorkspaceMemberRole, number> = {
   owner: 4,

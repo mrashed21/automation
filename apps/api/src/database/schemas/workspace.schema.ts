@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Schema as MongooseSchema } from "mongoose";
-import type { HydratedDocument } from "mongoose";
 import type { AutomationMode } from "@repo/types";
+import type { HydratedDocument } from "mongoose";
+import { Schema as MongooseSchema } from "mongoose";
 
 export type WorkspaceDocument = HydratedDocument<Workspace>;
 
