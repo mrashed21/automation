@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import { authSlice } from "@/store/slices/auth-slice";
-import { workspaceSlice } from "@/store/slices/workspace-slice";
-import { uiSlice } from "@/store/slices/ui-slice";
 import { baseApi } from "@/lib/api-client";
+import { authSlice } from "@/store/slices/auth-slice";
+import { uiSlice } from "@/store/slices/ui-slice";
+import { workspaceSlice } from "@/store/slices/workspace-slice";
 
 /**
  * Redux store configuration per plan.md section 13.

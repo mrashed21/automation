@@ -1,6 +1,6 @@
+import { BullModule } from "@nestjs/bullmq";
 import { Module } from "@nestjs/common";
 import { ConfigModule, ConfigService } from "@nestjs/config";
-import { BullModule } from "@nestjs/bullmq";
 
 import { QUEUE_NAMES } from "@repo/config";
 

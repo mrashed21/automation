@@ -1,4 +1,3 @@
-import type { Nullable } from "./common.types";
 
 /** AI Provider interface contracts */
 export type AiModelCapability = "text" | "image" | "voice" | "video" | "embedding";

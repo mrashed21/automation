@@ -1,5 +1,5 @@
-import type { AutomationMode } from "./content.types";
 import type { Nullable } from "./common.types";
+import type { AutomationMode } from "./content.types";
 
 /** RBAC roles per plan.md section 59 */
 export type WorkspaceMemberRole = "owner" | "admin" | "editor" | "viewer";
