@@ -1,7 +1,6 @@
 "use client";
 
-import * as React from "react";
-import { ChevronsUpDown, Check, Building2 } from "lucide-react";
+import { Building2, Check, ChevronsUpDown } from "lucide-react";
 
 import {
   DropdownMenu,
@@ -11,11 +10,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { selectWorkspace } from "@/store/slices/workspace-slice";
-import { setCurrentWorkspace } from "@/store/slices/auth-slice";
-import type { WorkspaceDto } from "@repo/types";
 import { cn } from "@/lib/utils";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { setCurrentWorkspace } from "@/store/slices/auth-slice";
+import { selectWorkspace } from "@/store/slices/workspace-slice";
+import type { WorkspaceDto } from "@repo/types";
 
 interface WorkspaceSwitcherProps {
   collapsed?: boolean;

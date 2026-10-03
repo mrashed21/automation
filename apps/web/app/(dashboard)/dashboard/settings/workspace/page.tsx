@@ -1,8 +1,7 @@
-import * as React from "react";
 import type { Metadata } from "next";
 
-import { WorkspaceSettingsForm } from "@/features/settings/components/workspace-settings-form";
 import { Separator } from "@/components/ui/separator";
+import { WorkspaceSettingsForm } from "@/features/settings/components/workspace-settings-form";
 
 export const metadata: Metadata = {
   title: "Workspace Settings",

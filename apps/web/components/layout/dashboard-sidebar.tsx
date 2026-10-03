@@ -1,26 +1,26 @@
 "use client";
 
-import * as React from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import {
-  LayoutDashboard,
-  FileText,
-  Radio,
   BarChart3,
-  Settings,
+  FileText,
+  LayoutDashboard,
   PanelLeftClose,
   PanelLeftOpen,
-  Zap,
+  Radio,
+  Settings,
   Target,
+  Zap,
 } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import * as React from "react";
 
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { Separator } from "@/components/ui/separator";
 import { WorkspaceSwitcher } from "@/components/layout/workspace-switcher";
+import { Separator } from "@/components/ui/separator";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { toggleSidebar } from "@/store/slices/ui-slice";
-import { cn } from "@/lib/utils";
 
 interface NavItem {
   label: string;

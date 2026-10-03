@@ -2,8 +2,8 @@
 
 import * as React from "react";
 
-import { useAppSelector } from "@/store/hooks";
 import { cn } from "@/lib/utils";
+import { useAppSelector } from "@/store/hooks";
 
 /**
  * Client-side wrapper that reads the sidebarCollapsed state from Redux

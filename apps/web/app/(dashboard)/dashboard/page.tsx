@@ -1,11 +1,10 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import { StatsRow } from "@/features/dashboard/components/stats-row";
 import { useGetContentsQuery } from "@/features/content/api/content-api";
-import { Sparkles, Plus, ArrowRight, Video, Zap, Radio, BarChart3 } from "lucide-react";
+import { StatsRow } from "@/features/dashboard/components/stats-row";
 import type { ContentDto } from "@repo/types";
+import { ArrowRight, BarChart3, Plus, Radio, Sparkles, Video, Zap } from "lucide-react";
+import Link from "next/link";
 
 export default function DashboardPage() {
   const { data: contentsData, isLoading } = useGetContentsQuery({ limit: 6 });

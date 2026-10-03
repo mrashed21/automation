@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
 import {
-  useListOpportunitiesQuery,
   useDiscoverOpportunitiesMutation,
+  useListOpportunitiesQuery,
 } from "@/features/strategy/api/strategyApi";
-import { StrategyInsightsCard } from "@/features/strategy/components/strategy-insights-card";
 import { OpportunityCard } from "@/features/strategy/components/opportunity-card";
+import { StrategyInsightsCard } from "@/features/strategy/components/strategy-insights-card";
 import type { OpportunityStatus } from "@repo/types";
+import React, { useState } from "react";
 
 export default function StrategyPage() {
   const [filterFormat, setFilterFormat] = useState<"all" | "shorts" | "long-form">("all");

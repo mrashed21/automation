@@ -1,9 +1,9 @@
 "use client";
 
-import * as React from "react";
-import { useRouter } from "next/navigation";
 import { LogOut, Settings, User } from "lucide-react";
+import { useRouter } from "next/navigation";
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,9 +12,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useAppSelector } from "@/store/hooks";
 import { useLogoutMutation } from "@/features/auth/api/auth-api";
+import { useAppSelector } from "@/store/hooks";
 
 export function UserMenu() {
   const router = useRouter();

@@ -1,7 +1,6 @@
 "use client";
 
-import * as React from "react";
-import { Menu, Moon, Sun, Monitor, Bell, Search, Sparkles } from "lucide-react";
+import { Bell, Menu, Monitor, Moon, Search, Sparkles, Sun } from "lucide-react";
 
 import { UserMenu } from "@/components/layout/user-menu";
 import {
@@ -10,9 +9,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { toggleSidebar, setTheme } from "@/store/slices/ui-slice";
 import { cn } from "@/lib/utils";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { setTheme, toggleSidebar } from "@/store/slices/ui-slice";
 
 const THEME_OPTIONS = [
   { value: "light" as const, label: "Light", icon: Sun },

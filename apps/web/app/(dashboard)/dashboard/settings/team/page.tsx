@@ -1,9 +1,8 @@
-import * as React from "react";
 import type { Metadata } from "next";
 
-import { TeamMembersTable } from "@/features/settings/components/team-members-table";
-import { InviteMemberForm } from "@/features/settings/components/invite-member-form";
 import { Separator } from "@/components/ui/separator";
+import { InviteMemberForm } from "@/features/settings/components/invite-member-form";
+import { TeamMembersTable } from "@/features/settings/components/team-members-table";
 
 export const metadata: Metadata = {
   title: "Team Members",

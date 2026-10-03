@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import { AuthGuard } from "@/features/auth/components/auth-guard";
-import { DashboardSidebar } from "@/components/layout/dashboard-sidebar";
-import { DashboardHeader } from "@/components/layout/dashboard-header";
 import { DashboardContentWrapper } from "@/components/layout/dashboard-content-wrapper";
+import { DashboardHeader } from "@/components/layout/dashboard-header";
+import { DashboardSidebar } from "@/components/layout/dashboard-sidebar";
+import { AuthGuard } from "@/features/auth/components/auth-guard";
 
 /**
  * Dashboard shell layout — wraps all authenticated pages.
