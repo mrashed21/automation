@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
 import { useGetAutomationStatusQuery } from "@/features/automation/api/automationApi";
 import { AutomationRulesList } from "@/features/automation/components/automation-rules-list";
-import { CreateRuleDialog } from "@/features/automation/components/create-rule-dialog";
 import { AutomationRunsTable } from "@/features/automation/components/automation-runs-table";
+import { CreateRuleDialog } from "@/features/automation/components/create-rule-dialog";
 import type { AutomationRuleDto } from "@repo/types";
+import { useState } from "react";
 
 function StatusPill({
   label,

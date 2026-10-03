@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
 import { useGetAnalyticsSummaryQuery } from "@/features/content/api/analyticsApi";
 import { useGetContentsQuery } from "@/features/content/api/content-api";
 import type { ContentDto } from "@repo/types";
+import Link from "next/link";
 
 export default function AnalyticsPage() {
   const { data: summary, isLoading: isLoadingSummary } = useGetAnalyticsSummaryQuery();

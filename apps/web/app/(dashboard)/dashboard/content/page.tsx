@@ -1,14 +1,14 @@
 "use client";
 
-import * as React from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import * as React from "react";
 
-import { useAppSelector } from "@/store/hooks";
+import { Button } from "@/components/ui/button";
 import { useGetContentsQuery } from "@/features/content/api/content-api";
 import { ContentFilterBar } from "@/features/content/components/content-filter-bar";
-import { ContentTable } from "@/features/content/components/content-table";
 import { ContentGrid } from "@/features/content/components/content-grid";
-import { Button } from "@/components/ui/button";
+import { ContentTable } from "@/features/content/components/content-table";
+import { useAppSelector } from "@/store/hooks";
 
 export default function ContentLibraryPage() {
   const { currentWorkspace } = useAppSelector((state) => state.auth);

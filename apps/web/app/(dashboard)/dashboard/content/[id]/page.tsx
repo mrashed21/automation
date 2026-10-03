@@ -1,15 +1,14 @@
 "use client";
 
-import * as React from "react";
+import { AlertCircle, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { ChevronLeft, AlertCircle } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import { useGetContentByIdQuery } from "@/features/content/api/content-api";
 import { ContentDetailsTabs } from "@/features/content/components/content-details-tabs";
 import { ContentStatusBadge } from "@/features/content/components/content-status-badge";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Button } from "@/components/ui/button";
 
 export default function ContentDetailsPage() {
   const params = useParams<{ id: string }>();
