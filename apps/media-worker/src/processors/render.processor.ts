@@ -1,9 +1,9 @@
 import { Processor, WorkerHost } from "@nestjs/bullmq";
 import { Logger } from "@nestjs/common";
-import { Job } from "bullmq";
-import * as path from "path";
 import { QUEUE_NAMES } from "@repo/config";
 import type { RenderJobPayload, RenderJobResult } from "@repo/types";
+import { Job } from "bullmq";
+import * as path from "path";
 import { FfmpegRenderService } from "../services/ffmpeg-render.service";
 
 @Processor(QUEUE_NAMES.RENDER)

@@ -3,8 +3,8 @@ import { Module } from "@nestjs/common";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 
 import { QUEUE_NAMES } from "@repo/config";
-import { FfmpegRenderService } from "./services/ffmpeg-render.service";
 import { RenderProcessor } from "./processors/render.processor";
+import { FfmpegRenderService } from "./services/ffmpeg-render.service";
 
 
 /**

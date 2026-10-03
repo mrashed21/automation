@@ -1,7 +1,7 @@
 import { Test, TestingModule } from "@nestjs/testing";
-import { FfmpegRenderService } from "./ffmpeg-render.service";
 import * as fs from "fs";
 import * as path from "path";
+import { FfmpegRenderService } from "./ffmpeg-render.service";
 
 describe("FfmpegRenderService", () => {
   let service: FfmpegRenderService;
