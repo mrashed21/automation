@@ -1,24 +1,24 @@
 import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
 import {
-  StrategyRecommendation,
-  StrategyRecommendationSchema,
-} from "../../database/schemas/strategy-recommendation.schema";
+  AnalyticsSnapshot,
+  AnalyticsSnapshotSchema,
+} from "../../database/schemas/analytics-snapshot.schema";
 import {
   Content,
   ContentSchema,
 } from "../../database/schemas/content.schema";
 import {
-  AnalyticsSnapshot,
-  AnalyticsSnapshotSchema,
-} from "../../database/schemas/analytics-snapshot.schema";
+  StrategyRecommendation,
+  StrategyRecommendationSchema,
+} from "../../database/schemas/strategy-recommendation.schema";
 import {
   WorkspaceMember,
   WorkspaceMemberSchema,
 } from "../../database/schemas/workspace-member.schema";
 import { AiModule } from "../ai/ai.module";
-import { StrategyService } from "./strategy.service";
 import { StrategyController } from "./strategy.controller";
+import { StrategyService } from "./strategy.service";
 
 @Module({
   imports: [

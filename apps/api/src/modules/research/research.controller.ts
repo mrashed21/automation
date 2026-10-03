@@ -8,13 +8,6 @@ import {
   UseGuards,
 } from "@nestjs/common";
 import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
-import { ResearchService } from "./research.service";
-import { JwtAuthGuard } from "../../common/guards/jwt-auth.guard";
-import { WorkspaceGuard } from "../../common/guards/workspace.guard";
-import { RolesGuard } from "../../common/guards/roles.guard";
-import { CurrentUser } from "../../common/decorators/current-user.decorator";
-import { CurrentWorkspace } from "../../common/decorators/current-workspace.decorator";
-import { Roles } from "../../common/decorators/roles.decorator";
 import type {
   ActiveWorkspaceContext,
   AuthenticatedUser,
@@ -22,6 +15,13 @@ import type {
   ResearchFactDto,
 } from "@repo/types";
 import type { GenerateResearchInput, VerifyFactInput } from "@repo/validation";
+import { CurrentUser } from "../../common/decorators/current-user.decorator";
+import { CurrentWorkspace } from "../../common/decorators/current-workspace.decorator";
+import { Roles } from "../../common/decorators/roles.decorator";
+import { JwtAuthGuard } from "../../common/guards/jwt-auth.guard";
+import { RolesGuard } from "../../common/guards/roles.guard";
+import { WorkspaceGuard } from "../../common/guards/workspace.guard";
+import { ResearchService } from "./research.service";
 
 @ApiTags("Research")
 @Controller("content")

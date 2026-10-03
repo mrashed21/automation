@@ -4,28 +4,28 @@ import {
   NotFoundException,
 } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
+import type {
+  AutoDiscoverTopicsInputDto,
+  ContentOpportunityDto,
+  OpportunityStatus,
+  StrategyInsightDto,
+  TopicDiversityResultDto,
+} from "@repo/types";
 import { Model, Types } from "mongoose";
 import { z } from "zod";
 import {
-  StrategyRecommendation,
-  StrategyRecommendationDocument,
-} from "../../database/schemas/strategy-recommendation.schema";
+  AnalyticsSnapshot,
+  AnalyticsSnapshotDocument,
+} from "../../database/schemas/analytics-snapshot.schema";
 import {
   Content,
   ContentDocument,
 } from "../../database/schemas/content.schema";
 import {
-  AnalyticsSnapshot,
-  AnalyticsSnapshotDocument,
-} from "../../database/schemas/analytics-snapshot.schema";
+  StrategyRecommendation,
+  StrategyRecommendationDocument,
+} from "../../database/schemas/strategy-recommendation.schema";
 import { AiService } from "../ai/ai.service";
-import type {
-  ContentOpportunityDto,
-  StrategyInsightDto,
-  TopicDiversityResultDto,
-  AutoDiscoverTopicsInputDto,
-  OpportunityStatus,
-} from "@repo/types";
 
 const aiTopicDiscoverySchema = z.object({
   opportunities: z.array(

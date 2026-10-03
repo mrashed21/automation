@@ -1,16 +1,16 @@
 import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
-import { Script, ScriptSchema } from "../../database/schemas/script.schema";
-import { ScriptVersion, ScriptVersionSchema } from "../../database/schemas/script-version.schema";
 import { Content, ContentSchema } from "../../database/schemas/content.schema";
-import { Research, ResearchSchema } from "../../database/schemas/research.schema";
 import { ResearchFact, ResearchFactSchema } from "../../database/schemas/research-fact.schema";
+import { Research, ResearchSchema } from "../../database/schemas/research.schema";
+import { ScriptVersion, ScriptVersionSchema } from "../../database/schemas/script-version.schema";
+import { Script, ScriptSchema } from "../../database/schemas/script.schema";
 import {
   WorkspaceMember,
   WorkspaceMemberSchema,
 } from "../../database/schemas/workspace-member.schema";
-import { ScriptService } from "./script.service";
 import { ScriptController } from "./script.controller";
+import { ScriptService } from "./script.service";
 
 @Module({
   imports: [

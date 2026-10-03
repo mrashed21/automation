@@ -11,23 +11,23 @@ import {
   UseGuards,
 } from "@nestjs/common";
 import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
-import { WorkspacesService } from "./workspaces.service";
-import { JwtAuthGuard } from "../../common/guards/jwt-auth.guard";
-import { WorkspaceGuard } from "../../common/guards/workspace.guard";
-import { RolesGuard } from "../../common/guards/roles.guard";
-import { CurrentUser } from "../../common/decorators/current-user.decorator";
-import { Roles } from "../../common/decorators/roles.decorator";
+import type {
+  AuthenticatedUser,
+  WorkspaceDto,
+  WorkspaceMemberDto,
+} from "@repo/types";
 import type {
   CreateWorkspaceInput,
   InviteMemberInput,
   UpdateMemberRoleInput,
   UpdateWorkspaceInput,
 } from "@repo/validation";
-import type {
-  AuthenticatedUser,
-  WorkspaceDto,
-  WorkspaceMemberDto,
-} from "@repo/types";
+import { CurrentUser } from "../../common/decorators/current-user.decorator";
+import { Roles } from "../../common/decorators/roles.decorator";
+import { JwtAuthGuard } from "../../common/guards/jwt-auth.guard";
+import { RolesGuard } from "../../common/guards/roles.guard";
+import { WorkspaceGuard } from "../../common/guards/workspace.guard";
+import { WorkspacesService } from "./workspaces.service";
 
 @ApiTags("Workspaces")
 @Controller("workspaces")

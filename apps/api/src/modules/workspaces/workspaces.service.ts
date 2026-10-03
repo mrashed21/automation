@@ -6,20 +6,20 @@ import {
   NotFoundException,
 } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
-import { Model, Types } from "mongoose";
-import { Workspace, WorkspaceDocument } from "../../database/schemas/workspace.schema";
-import {
-  WorkspaceMember,
-  WorkspaceMemberDocument,
-} from "../../database/schemas/workspace-member.schema";
-import { UsersService } from "../users/users.service";
+import type { WorkspaceDto, WorkspaceMemberDto, WorkspaceMemberRole } from "@repo/types";
 import type {
   CreateWorkspaceInput,
   InviteMemberInput,
   UpdateMemberRoleInput,
   UpdateWorkspaceInput,
 } from "@repo/validation";
-import type { WorkspaceDto, WorkspaceMemberDto, WorkspaceMemberRole } from "@repo/types";
+import { Model, Types } from "mongoose";
+import {
+  WorkspaceMember,
+  WorkspaceMemberDocument,
+} from "../../database/schemas/workspace-member.schema";
+import { Workspace, WorkspaceDocument } from "../../database/schemas/workspace.schema";
+import { UsersService } from "../users/users.service";
 
 @Injectable()
 export class WorkspacesService {

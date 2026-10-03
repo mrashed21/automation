@@ -1,12 +1,12 @@
-import { Test, TestingModule } from "@nestjs/testing";
 import { getModelToken } from "@nestjs/mongoose";
+import { Test, TestingModule } from "@nestjs/testing";
 import { Types } from "mongoose";
-import { ResearchService } from "./research.service";
-import { Research } from "../../database/schemas/research.schema";
-import { ResearchSource } from "../../database/schemas/research-source.schema";
-import { ResearchFact } from "../../database/schemas/research-fact.schema";
 import { Content } from "../../database/schemas/content.schema";
+import { ResearchFact } from "../../database/schemas/research-fact.schema";
+import { ResearchSource } from "../../database/schemas/research-source.schema";
+import { Research } from "../../database/schemas/research.schema";
 import { AiService } from "../ai/ai.service";
+import { ResearchService } from "./research.service";
 
 describe("ResearchService", () => {
   let service: ResearchService;

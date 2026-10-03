@@ -1,11 +1,11 @@
-import { Test, TestingModule } from "@nestjs/testing";
 import { getModelToken } from "@nestjs/mongoose";
+import { Test, TestingModule } from "@nestjs/testing";
 import { Types } from "mongoose";
-import { StrategyService } from "./strategy.service";
-import { StrategyRecommendation } from "../../database/schemas/strategy-recommendation.schema";
-import { Content } from "../../database/schemas/content.schema";
 import { AnalyticsSnapshot } from "../../database/schemas/analytics-snapshot.schema";
+import { Content } from "../../database/schemas/content.schema";
+import { StrategyRecommendation } from "../../database/schemas/strategy-recommendation.schema";
 import { AiService } from "../ai/ai.service";
+import { StrategyService } from "./strategy.service";
 
 const mockWsId = new Types.ObjectId().toString();
 const mockUserId = new Types.ObjectId().toString();

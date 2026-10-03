@@ -4,19 +4,19 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { ThrottlerModule } from "@nestjs/throttler";
 
 import { HealthModule } from "./health/health.module";
-import { UsersModule } from "./modules/users/users.module";
-import { WorkspacesModule } from "./modules/workspaces/workspaces.module";
-import { AuthModule } from "./modules/auth/auth.module";
-import { ContentModule } from "./modules/content/content.module";
 import { AiModule } from "./modules/ai/ai.module";
+import { AnalyticsModule } from "./modules/analytics/analytics.module";
+import { AuthModule } from "./modules/auth/auth.module";
+import { AutomationModule } from "./modules/automation/automation.module";
+import { ContentModule } from "./modules/content/content.module";
+import { MediaAssetsModule } from "./modules/media-assets/media-assets.module";
+import { PublishingModule } from "./modules/publishing/publishing.module";
 import { ResearchModule } from "./modules/research/research.module";
 import { ScriptModule } from "./modules/script/script.module";
 import { StorageModule } from "./modules/storage/storage.module";
-import { MediaAssetsModule } from "./modules/media-assets/media-assets.module";
-import { PublishingModule } from "./modules/publishing/publishing.module";
-import { AutomationModule } from "./modules/automation/automation.module";
-import { AnalyticsModule } from "./modules/analytics/analytics.module";
 import { StrategyModule } from "./modules/strategy/strategy.module";
+import { UsersModule } from "./modules/users/users.module";
+import { WorkspacesModule } from "./modules/workspaces/workspaces.module";
 
 @Module({
   imports: [

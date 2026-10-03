@@ -25,10 +25,7 @@ export class GeminiTextProvider implements IAiTextProvider {
   async generateText(prompt: string, options?: AiPromptOptions): Promise<AiTextResponse<string>> {
     const startTime = Date.now();
     const primaryModel = this.resolveModel(options?.model);
-    const candidateModels = [primaryModel];
-    if (primaryModel !== "gemini-3.5-flash") {
-      candidateModels.push("gemini-3.5-flash");
-    }
+    const candidateModels = Array.from(new Set([primaryModel, "gemini-3.5-flash", "gemini-3.8-flash", "gemini-3.5-flash-lite"]));
 
     // If API key is provided, attempt live LLM call
     if (this.apiKey) {
@@ -112,10 +109,7 @@ export class GeminiTextProvider implements IAiTextProvider {
   ): Promise<AiTextResponse<T>> {
     const startTime = Date.now();
     const primaryModel = this.resolveModel(options?.model);
-    const candidateModels = [primaryModel];
-    if (primaryModel !== "gemini-3.5-flash") {
-      candidateModels.push("gemini-3.5-flash");
-    }
+    const candidateModels = Array.from(new Set([primaryModel, "gemini-3.5-flash", "gemini-3.8-flash", "gemini-3.5-flash-lite"]));
 
     const fullPrompt = `${prompt}\n\nYou must return only valid JSON adhering strictly to this schema specification:\n${schemaDescription}\n\nDo not wrap in markdown quotes or code blocks.`;
 

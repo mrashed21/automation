@@ -1,10 +1,10 @@
 import { ConflictException, Injectable, NotFoundException } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
-import { Model, Types } from "mongoose";
-import * as bcrypt from "bcryptjs";
-import { User, UserDocument } from "../../database/schemas/user.schema";
-import type { RegisterInput } from "@repo/validation";
 import type { UserDto } from "@repo/types";
+import type { RegisterInput } from "@repo/validation";
+import * as bcrypt from "bcryptjs";
+import { Model, Types } from "mongoose";
+import { User, UserDocument } from "../../database/schemas/user.schema";
 
 @Injectable()
 export class UsersService {

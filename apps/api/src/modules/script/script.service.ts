@@ -1,26 +1,26 @@
 import {
   Injectable,
-  NotFoundException,
   Logger,
+  NotFoundException,
 } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
-import { Model, Types } from "mongoose";
-import { Script, ScriptDocument } from "../../database/schemas/script.schema";
-import { ScriptVersion, ScriptVersionDocument } from "../../database/schemas/script-version.schema";
-import { Content, ContentDocument } from "../../database/schemas/content.schema";
-import { Research, ResearchDocument } from "../../database/schemas/research.schema";
-import { ResearchFact, ResearchFactDocument } from "../../database/schemas/research-fact.schema";
-import { AiService } from "../ai/ai.service";
-import {
-  scriptOutputValidationSchema,
-  type GenerateScriptInput,
-  type UpdateScriptInput,
-  type ScriptOutputValidation,
-} from "@repo/validation";
 import type {
   ScriptDto,
   ScriptVersionDto,
 } from "@repo/types";
+import {
+  scriptOutputValidationSchema,
+  type GenerateScriptInput,
+  type ScriptOutputValidation,
+  type UpdateScriptInput,
+} from "@repo/validation";
+import { Model, Types } from "mongoose";
+import { Content, ContentDocument } from "../../database/schemas/content.schema";
+import { ResearchFact, ResearchFactDocument } from "../../database/schemas/research-fact.schema";
+import { Research, ResearchDocument } from "../../database/schemas/research.schema";
+import { ScriptVersion, ScriptVersionDocument } from "../../database/schemas/script-version.schema";
+import { Script, ScriptDocument } from "../../database/schemas/script.schema";
+import { AiService } from "../ai/ai.service";
 
 @Injectable()
 export class ScriptService {
