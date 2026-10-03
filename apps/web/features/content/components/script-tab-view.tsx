@@ -1,36 +1,36 @@
 "use client";
 
-import * as React from "react";
+import { format } from "date-fns";
 import {
-  Sparkles,
-  History,
-  Save,
   Clock,
-  Mic,
-  Video,
-  Plus,
-  Trash2,
-  RefreshCw,
   Edit3,
   FileText,
+  History,
   Loader2,
+  Mic,
+  Plus,
+  RefreshCw,
+  Save,
+  Sparkles,
+  Trash2,
+  Video,
 } from "lucide-react";
+import * as React from "react";
 import { toast } from "sonner";
-import { format } from "date-fns";
 
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import {
-  useGetScriptByContentIdQuery,
-  useGetScriptVersionsQuery,
-  useGenerateScriptMutation,
-  useUpdateScriptMutation,
-} from "../api/script-api";
 import type {
   ContentDto,
   ScriptSectionDto,
 } from "@repo/types";
+import {
+  useGenerateScriptMutation,
+  useGetScriptByContentIdQuery,
+  useGetScriptVersionsQuery,
+  useUpdateScriptMutation,
+} from "../api/script-api";
 
 interface ScriptTabViewProps {
   content: ContentDto;

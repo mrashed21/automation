@@ -1,29 +1,29 @@
 "use client";
 
-import * as React from "react";
 import {
-  CheckCircle2,
   AlertCircle,
+  BookOpen,
+  CheckCircle2,
   ExternalLink,
-  Sparkles,
+  FileCheck2,
+  Loader2,
   RefreshCw,
   Search,
   ShieldCheck,
-  BookOpen,
-  Loader2,
-  FileCheck2,
+  Sparkles,
 } from "lucide-react";
+import * as React from "react";
 import { toast } from "sonner";
 
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import type { ContentDto, FactVerificationStatus } from "@repo/types";
 import {
-  useGetResearchByContentIdQuery,
   useGenerateResearchMutation,
+  useGetResearchByContentIdQuery,
   useUpdateFactStatusMutation,
   useVerifyAllFactsMutation,
 } from "../api/research-api";
-import type { ContentDto, FactVerificationStatus } from "@repo/types";
 
 interface ResearchTabViewProps {
   content: ContentDto;

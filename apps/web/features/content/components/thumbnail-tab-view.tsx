@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import type { ContentDto, ThumbnailAssetDto } from "@repo/types";
+import { useState } from "react";
 import {
-  useGetContentMediaQuery,
   useGenerateThumbnailVariantsMutation,
+  useGetContentMediaQuery,
   useSelectPrimaryThumbnailMutation,
 } from "../api/media-api";
-import type { ContentDto, ThumbnailAssetDto } from "@repo/types";
 
 
 interface ThumbnailTabViewProps {

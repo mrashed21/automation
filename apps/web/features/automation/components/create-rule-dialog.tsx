@@ -1,11 +1,11 @@
 "use client";
 
+import type { AutomationRuleDto } from "@repo/types";
 import React, { useState } from "react";
 import {
   useCreateAutomationRuleMutation,
   useUpdateAutomationRuleMutation,
 } from "../api/automationApi";
-import type { AutomationRuleDto } from "@repo/types";
 
 interface CreateRuleDialogProps {
   isOpen: boolean;

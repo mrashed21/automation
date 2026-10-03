@@ -1,22 +1,22 @@
 "use client";
 
-import React, { useState } from "react";
+import type { AnalyticsSnapshotDto, ContentDto } from "@repo/types";
+import { useState } from "react";
 import {
-  useGetLatestAnalyticsQuery,
-  useGetAnalyticsSnapshotsQuery,
-  useSyncAnalyticsMutation,
-} from "../api/analyticsApi";
-import type { ContentDto, AnalyticsSnapshotDto } from "@repo/types";
-import {
-  AreaChart,
   Area,
+  AreaChart,
+  CartesianGrid,
+  Legend,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  Legend,
 } from "recharts";
+import {
+  useGetAnalyticsSnapshotsQuery,
+  useGetLatestAnalyticsQuery,
+  useSyncAnalyticsMutation,
+} from "../api/analyticsApi";
 
 interface AnalyticsTabViewProps {
   content: ContentDto;

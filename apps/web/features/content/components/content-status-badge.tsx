@@ -1,6 +1,5 @@
-import * as React from "react";
-import type { ContentStatus } from "@repo/types";
 import { Badge } from "@/components/ui/badge";
+import type { ContentStatus } from "@repo/types";
 
 interface ContentStatusBadgeProps {
   status: ContentStatus;

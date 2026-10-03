@@ -1,8 +1,8 @@
 "use client";
 
-import * as React from "react";
 import { LayoutGrid, List, Search, X } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -11,7 +11,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
 import { CreateContentDialog } from "./create-content-dialog";
 
 interface ContentFilterBarProps {

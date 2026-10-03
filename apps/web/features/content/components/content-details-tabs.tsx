@@ -1,43 +1,43 @@
 "use client";
 
-import * as React from "react";
-import { formatDistanceToNow, format } from "date-fns";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { toast } from "sonner";
+import { format, formatDistanceToNow } from "date-fns";
 import {
-  FileText,
-  History,
-  Sparkles,
-  Video,
-  Image as ImageIcon,
-  Send,
   BarChart3,
   CheckCircle2,
-  Save,
   Clock,
+  FileText,
+  History,
+  Image as ImageIcon,
+  Save,
+  Send,
+  Sparkles,
+  Video,
 } from "lucide-react";
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { ContentStatusBadge } from "./content-status-badge";
-import { ResearchTabView } from "./research-tab-view";
-import { ScriptTabView } from "./script-tab-view";
-import { MediaTabView } from "./media-tab-view";
-import { ThumbnailTabView } from "./thumbnail-tab-view";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PublishingTabView } from "../../publishing/components/publishing-tab-view";
 import { AnalyticsTabView } from "./analytics-tab-view";
+import { ContentStatusBadge } from "./content-status-badge";
+import { MediaTabView } from "./media-tab-view";
+import { ResearchTabView } from "./research-tab-view";
+import { ScriptTabView } from "./script-tab-view";
+import { ThumbnailTabView } from "./thumbnail-tab-view";
 
-import {
-  useUpdateContentMutation,
-  useGetContentVersionsQuery,
-} from "../api/content-api";
-import { updateContentSchema, type UpdateContentInput } from "@repo/validation";
 import type { ContentDto } from "@repo/types";
+import { updateContentSchema, type UpdateContentInput } from "@repo/validation";
+import {
+  useGetContentVersionsQuery,
+  useUpdateContentMutation,
+} from "../api/content-api";
 
 interface ContentDetailsTabsProps {
   content: ContentDto;

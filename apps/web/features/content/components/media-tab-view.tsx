@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import type { ContentDto, MediaAssetDto, MediaType } from "@repo/types";
+import React, { useRef, useState } from "react";
 import {
-  useGetContentMediaQuery,
-  useGenerateVoiceNarrationMutation,
   useDeleteMediaAssetMutation,
+  useGenerateVoiceNarrationMutation,
+  useGetContentMediaQuery,
   useStartContentRenderMutation,
 } from "../api/media-api";
-import type { ContentDto, MediaType, MediaAssetDto } from "@repo/types";
 
 interface MediaTabViewProps {
   content: ContentDto;
