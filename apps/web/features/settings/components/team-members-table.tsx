@@ -1,20 +1,19 @@
 "use client";
 
-import * as React from "react";
-import { toast } from "sonner";
 import { Trash2 } from "lucide-react";
+import { toast } from "sonner";
 
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { useAppSelector } from "@/store/hooks";
 import {
   useGetWorkspaceMembersQuery,
-  useUpdateMemberRoleMutation,
   useRemoveMemberMutation,
+  useUpdateMemberRoleMutation,
 } from "@/features/workspaces/api/workspace-api";
+import { useAppSelector } from "@/store/hooks";
 import type { WorkspaceMemberDto, WorkspaceMemberRole } from "@repo/types";
 import type { UpdateMemberRoleInput } from "@repo/validation";
 

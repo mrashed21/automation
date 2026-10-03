@@ -1,8 +1,7 @@
 "use client";
 
-import * as React from "react";
-import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import type { LucideIcon } from "lucide-react";
 
 interface MetricCardProps {
   id: string;

@@ -6,8 +6,8 @@ import {
   type FetchBaseQueryError,
 } from "@reduxjs/toolkit/query/react";
 
+import { logout, setToken } from "@/store/slices/auth-slice";
 import { API_BASE_PATH } from "@repo/config";
-import { setToken, logout } from "@/store/slices/auth-slice";
 
 const rawApiUrl = process.env["NEXT_PUBLIC_API_URL"] ?? "http://localhost:3010";
 const apiUrl = rawApiUrl.replace(/\/+$/, "");

@@ -1,19 +1,19 @@
 "use client";
 
+import type {
+  ContentDto,
+  PublicationPrivacy,
+  PublishingPlatform,
+} from "@repo/types";
 import React, { useState } from "react";
 import {
-  useGetConnectedAccountsQuery,
   useConnectSocialAccountMutation,
   useDisconnectSocialAccountMutation,
+  useGetConnectedAccountsQuery,
   useGetContentPublicationsQuery,
   usePublishNowMutation,
   useSchedulePublicationMutation,
 } from "../api/publishing-api";
-import type {
-  ContentDto,
-  PublishingPlatform,
-  PublicationPrivacy,
-} from "@repo/types";
 
 interface PublishingTabViewProps {
   content: ContentDto;

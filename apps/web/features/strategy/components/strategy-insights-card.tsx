@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { useGetStrategyInsightsQuery } from "../api/strategyApi";
 
 export function StrategyInsightsCard() {

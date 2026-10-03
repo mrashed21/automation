@@ -1,7 +1,7 @@
 import { baseApi } from "@/lib/api-client";
 import type {
-  SocialAccountDto,
   PublicationRecordDto,
+  SocialAccountDto,
 } from "@repo/types";
 import type {
   ConnectSocialAccountInput,

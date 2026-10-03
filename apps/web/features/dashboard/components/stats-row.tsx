@@ -1,11 +1,10 @@
 "use client";
 
-import * as React from "react";
-import { FileText, Send, BarChart3, Sparkles } from "lucide-react";
-import { MetricCard } from "@/features/dashboard/components/metric-card";
-import { useGetContentsQuery } from "@/features/content/api/content-api";
 import { useGetAnalyticsSummaryQuery } from "@/features/content/api/analyticsApi";
+import { useGetContentsQuery } from "@/features/content/api/content-api";
+import { MetricCard } from "@/features/dashboard/components/metric-card";
 import { useListOpportunitiesQuery } from "@/features/strategy/api/strategyApi";
+import { BarChart3, FileText, Send, Sparkles } from "lucide-react";
 
 export function StatsRow() {
   const { data: contentsData, isLoading: isLoadingContents } = useGetContentsQuery({ limit: 100 });

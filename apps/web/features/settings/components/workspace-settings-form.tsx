@@ -1,8 +1,7 @@
 "use client";
 
-import * as React from "react";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -10,8 +9,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { useAppSelector } from "@/store/hooks";
 import { useUpdateWorkspaceMutation } from "@/features/workspaces/api/workspace-api";
+import { useAppSelector } from "@/store/hooks";
 import { updateWorkspaceSchema, type UpdateWorkspaceInput } from "@repo/validation";
 
 export function WorkspaceSettingsForm() {

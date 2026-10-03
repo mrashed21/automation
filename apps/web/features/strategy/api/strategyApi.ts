@@ -1,9 +1,9 @@
 import { baseApi } from "@/lib/api-client";
 import type {
+  AutoDiscoverTopicsInputDto,
   ContentOpportunityDto,
   StrategyInsightDto,
   TopicDiversityResultDto,
-  AutoDiscoverTopicsInputDto,
 } from "@repo/types";
 
 export const strategyApi = baseApi.injectEndpoints({

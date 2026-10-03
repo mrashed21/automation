@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import {
-  useProduceFromOpportunityMutation,
-  useDismissOpportunityMutation,
-} from "../api/strategyApi";
 import type { ContentOpportunityDto } from "@repo/types";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import {
+  useDismissOpportunityMutation,
+  useProduceFromOpportunityMutation,
+} from "../api/strategyApi";
 
 interface OpportunityCardProps {
   opportunity: ContentOpportunityDto;
