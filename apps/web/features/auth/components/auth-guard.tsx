@@ -1,9 +1,9 @@
 "use client";
 
-import * as React from "react";
-import { useRouter } from "next/navigation";
-import { useGetMeQuery } from "../api/auth-api";
 import { useAppSelector } from "@/store/hooks";
+import { useRouter } from "next/navigation";
+import * as React from "react";
+import { useGetMeQuery } from "../api/auth-api";
 
 interface AuthGuardProps {
   children: React.ReactNode;

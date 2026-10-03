@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
-import { useListAutomationRunsQuery } from "../api/automationApi";
 import type { AutomationRunDto } from "@repo/types";
+import { useListAutomationRunsQuery } from "../api/automationApi";
 
 interface AutomationRunsTableProps {
   ruleId?: string;

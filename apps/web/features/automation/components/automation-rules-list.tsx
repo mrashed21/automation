@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import type { AutomationRuleDto } from "@repo/types";
+import { useState } from "react";
 import {
+  useDeleteAutomationRuleMutation,
   useListAutomationRulesQuery,
   useToggleAutomationRuleMutation,
-  useDeleteAutomationRuleMutation,
   useTriggerAutomationRuleMutation,
 } from "../api/automationApi";
-import type { AutomationRuleDto } from "@repo/types";
 
 interface AutomationRulesListProps {
   onCreateClick: () => void;
